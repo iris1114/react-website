@@ -1,10 +1,17 @@
+import { BrowserRouter, Route } from "react-router-dom";
 
-function App() {
+import Header from "./components/common/Header";
+import HomePage from "./pages/HomePage";
+
+const App = () => {
   return (
-    <div className="App">
-      <div>app</div>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Route path="/">
+        <HomePage />
+      </Route>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
