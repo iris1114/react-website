@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { COLOR } from "../../utils";
+import { COLOR } from "../../utils/styles";
 
-const Button = ({ btnLink, btnText, variant }) => {
+const Button = ({ text, variant }) => {
   return (
-    <StyledButton to={btnLink} className="f-lg-m" variant={variant}>
-      {btnText}
+    <StyledButton className="f-lg-m" variant={variant}>
+      {text}
     </StyledButton>
   );
 };

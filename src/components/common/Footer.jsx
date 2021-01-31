@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { COLOR } from "../../utils";
+import { COLOR } from "../../utils/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
@@ -31,7 +31,7 @@ const StyledFooter = styled.footer`
   padding: 20px 0px;
   text-align: center;
   color: ${COLOR.nude};
-  background-color: #a9998c;
+  background-color: ${COLOR.darkBrown};
 
   .icon {
     color: ${COLOR.nude};

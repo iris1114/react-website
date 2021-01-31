@@ -1,9 +1,7 @@
 import React from "react";
 
-const AboutMapSection = () =>{
-    return (
-        <div>About Map Page</div>
-    );
-}
+const AboutMapSection = () => {
+  return <section></section>;
+};
 
 export default AboutMapSection;

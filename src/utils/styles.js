@@ -11,6 +11,7 @@ export const COLOR = {
     darkGold: "#a3813c",
     white: "#fff",
     balck: "#000",
-    nude:"#ebe7e4"
+    nude:"#ebe7e4",
+    darkBrown: "#a9998c"
 }
   

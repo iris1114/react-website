@@ -276,4 +276,16 @@ img {
   vertical-align: middle;
 }
 
+/* main {
+  padding: 50px 0px;
+} */
+
+.text-upper {
+  text-transform: uppercase;
+}
+
+.custom-switch {
+  padding: 0px;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Montserrat:wght@400&display=swap");

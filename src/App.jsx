@@ -8,6 +8,7 @@ import ProductListPage from "./pages/ProductListPage";
 import CartPage from "./pages/CartPage";
 import Switch from "react-bootstrap/esm/Switch";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./index.css";
 import Footer from "./components/common/Footer";
 import ProductPage from "./pages/ProductPage";

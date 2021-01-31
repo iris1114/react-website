@@ -3,7 +3,7 @@ import { Nav, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 import logo from "../../images/common/logo.png";
 import cartIcon from "../../images/common/cartIcon.png";
-import { BREAKPOINTS, COLOR } from "../../utils";
+import { BREAKPOINTS, COLOR } from "../../utils/styles";
 import { Link } from "react-router-dom";
 
 const Header = () => {
