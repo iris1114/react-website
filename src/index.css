@@ -128,6 +128,7 @@ a {
   text-decoration: none;
   color: #000;
 }
+
 a:hover {
   text-decoration: none;
   color: #000;
@@ -266,7 +267,7 @@ table {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #1c274a;
 }
 
@@ -274,3 +275,5 @@ img {
   width: 100%;
   vertical-align: middle;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Montserrat:wght@400&display=swap");
