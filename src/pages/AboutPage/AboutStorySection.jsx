@@ -15,11 +15,6 @@ const AboutStorySection = () => {
             Gummies candy cotton candy cotton candy fruitcake. Donut gingerbread
             chupa chups jelly beans muffin dessert danish.
           </p>
-          <p className="f-lg-xl f-m">
-            Tart gingerbread cake tiramisu cupcake croissant pudding bear.
-            Gummies candy cotton candy cotton candy fruitcake. Donut gingerbread
-            chupa chups jelly beans muffin dessert danish.
-          </p>
         </div>
       </div>
     </section>
