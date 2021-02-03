@@ -12,6 +12,7 @@ export const COLOR = {
     white: "#fff",
     balck: "#000",
     nude:"#ebe7e4",
-    darkBrown: "#a9998c"
+    darkBrown: "#a9998c",
+    red: "#880000"
 }
   
