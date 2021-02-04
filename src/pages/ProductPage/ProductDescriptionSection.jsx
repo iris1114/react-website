@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { COLOR } from "../../utils/styles";
 
 const ProductDescriptionSection = ({ product }) => {
-  console.log({ product });
   return (
     <StyledProductDescriptionSection>
       <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">

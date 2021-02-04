@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../components/common/Button";
 import styled from "styled-components";
 import ProductCouterInput from "../../components/product/ProductCouterInput";
 
 const ProductInfoSection = ({ product }) => {
+  const [quantity, setQuantity] = useState(1);
   return (
     <StyledProductInfoSection>
       <div className="mb-5">
@@ -13,7 +14,7 @@ const ProductInfoSection = ({ product }) => {
       </div>
       <div>
         <div className="mb-5">
-          <ProductCouterInput />
+          <ProductCouterInput quantity={quantity} />
         </div>
 
         <Button text="Add To Cart" variant="primary" />

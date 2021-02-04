@@ -1,30 +1,37 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import Loading from "../../components/common/Loading";
 import useProduct from "../../hooks/product/useProduct";
-// import ProductDescriptionSection from "./ProductDescriptionSection";
-// import ProductImageSection from "./ProductImageSection";
-// import ProductInfoSection from "./ProductInfoSection";
+import ErrorPage from "../ErrorPage";
+import ProductDescriptionSection from "./ProductDescriptionSection";
+import ProductImageSection from "./ProductImageSection";
+import ProductInfoSection from "./ProductInfoSection";
 
 const ProductPage = () => {
   const param = useParams();
   const productId = param.productId;
-  const { product } = useProduct(productId);
-  console.log(product);
+  const { product, loading, error } = useProduct(productId);
 
   return (
     <StyledProductPage>
-      <div className="container">
-        <div className="row mb-5">
-          <div className="col-12 col-md-8">
-            {/* <ProductImageSection product={product} /> */}
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <ErrorPage />
+      ) : (
+        <div className="container">
+          <div className="row mb-5">
+            <div className="col-12 col-md-8">
+              <ProductImageSection product={product} />
+            </div>
+            <div className="col-12 col-md-4">
+              <ProductInfoSection product={product} />
+            </div>
           </div>
-          <div className="col-12 col-md-4">
-            {/* <ProductInfoSection product={product} /> */}
-          </div>
+          <ProductDescriptionSection product={product} />
         </div>
-        {/* <ProductDescriptionSection product={product} /> */}
-      </div>
+      )}
     </StyledProductPage>
   );
 };

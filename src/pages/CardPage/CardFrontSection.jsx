@@ -5,7 +5,7 @@ import { faUpload } from "@fortawesome/free-solid-svg-icons";
 
 import defaultCard from "../../images/card/defaultCard.jpg";
 import { cardFrontImages } from "../../utils/data";
-import { COLOR } from "../../utils/styles";
+import { BREAKPOINTS, COLOR } from "../../utils/styles";
 
 const CardFrontSection = () => {
   const [cardImage, setCardImage] = useState(defaultCard);
@@ -76,6 +76,10 @@ const StyledCardFrontSection = styled.section`
     height: 450px;
     position: relative;
     overflow: hidden;
+
+    @media (max-width: ${BREAKPOINTS.sm}px) {
+      height: 250px;
+    }
   }
 
   .select-area {
@@ -83,6 +87,10 @@ const StyledCardFrontSection = styled.section`
     width: 100%;
     height: 450px;
     overflow: scroll;
+
+    @media (max-width: ${BREAKPOINTS.sm}px) {
+      height: 380px;
+    }
 
     label {
       cursor: pointer;

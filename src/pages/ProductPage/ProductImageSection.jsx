@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { COLOR } from "../../utils/styles";
 
 const ProductImageSection = ({ product }) => {
-  console.log({ product });
+  const [mainImage, setMainImage] = useState(product.images[0].url);
+
+  const handleImageChange = (url) => {
+    setMainImage(url);
+  };
+
   return (
     <StyledProductImageSection className="d-flex flex-column flex-md-row">
       <div className="d-flex col-12 col-md-3 order-1 flex-md-column order-md-0">
-        {product.images.map((image, index) => {
+        {product.images.map((image) => {
           return (
-            <div className="small-image mb-2 m-1" key={index}>
-              <img src={image} alt={product.name} />
+            <div
+              className="small-image mb-2 m-1"
+              key={image.id}
+              onClick={() => {
+                handleImageChange(image.url);
+              }}
+            >
+              <img src={image.url} alt={product.name} />
             </div>
           );
         })}
       </div>
 
-      <div className="col-12 col-md-9 mb-3">
-        <img src={product.images[0]} alt={product.name} />
+      <div className="col-12 col-md-9 mb-3 ">
+        <img className="main-image" src={mainImage} alt={product.name} />
       </div>
     </StyledProductImageSection>
   );
@@ -25,6 +37,10 @@ const ProductImageSection = ({ product }) => {
 const StyledProductImageSection = styled.section`
   .small-image {
     cursor: pointer;
+    border: 1px solid ${COLOR.nude};
+  }
+  .main-image {
+    border: 1px solid ${COLOR.nude};
   }
 `;
 

@@ -12,12 +12,13 @@ const Banner = ({ image, text }) => {
 
 const StyledBanner = styled.div`
   background-image: url(${(props) => props.bg});
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-attachment: fixed;
 
   @media (max-width: ${BREAKPOINTS.lg}px) {
     background-attachment: inherit;
+    background-size: cover;
   }
 
   .text {

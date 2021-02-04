@@ -2,12 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import { COLOR } from "../../utils/styles";
 
-const ProductCouterInput = () => {
+const ProductCouterInput = ({ quantity, onMinus, onPlus }) => {
+  console.log(quantity);
   return (
     <StyledProductCouterInput>
-      <button className="f-lg-2xl">-</button>
-      <input type="number" value="1" />
-      <button className="f-lg-2xl">+</button>
+      <button
+        className="f-lg-2xl"
+        onClick={() => {
+          onMinus && onMinus();
+        }}
+      >
+        -
+      </button>
+      <input type="number" value={quantity} />
+      <button
+        className="f-lg-2xl"
+        onClick={() => {
+          onPlus && onPlus();
+        }}
+      >
+        +
+      </button>
     </StyledProductCouterInput>
   );
 };
