@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { BREAKPOINTS } from "../../utils/styles";
 
 const Banner = ({ image, text }) => {
-  console.log({ image });
   return (
     <StyledBanner bg={image}>
       <h2 className="f-lg-6xl f-md-4xl f-3xl text text-upper">{text}</h2>
@@ -13,7 +12,7 @@ const Banner = ({ image, text }) => {
 
 const StyledBanner = styled.div`
   background-image: url(${(props) => props.bg});
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 
