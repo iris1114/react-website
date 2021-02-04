@@ -7,6 +7,7 @@ import useProductList from "../../hooks/product/useProductList";
 
 const ProductListPage = () => {
   const { products } = useProductList();
+
   return (
     <main>
       <Banner image={`${banner.productList}`} text="Shop" />

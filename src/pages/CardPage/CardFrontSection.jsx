@@ -12,6 +12,7 @@ const CardFrontSection = () => {
 
   const handleUploadImageChange = (e) => {
     const file = e.target.files[0];
+
     const img = URL.createObjectURL(file);
     setCardImage(img);
     e.target.value = null;
@@ -42,6 +43,7 @@ const CardFrontSection = () => {
               className="d-flex align-items-center justify-content-center m-3"
             >
               <FontAwesomeIcon className="icon" icon={faUpload} size="lg" />
+
               <p>upload your photo</p>
             </label>
           </div>
