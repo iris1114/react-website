@@ -9,9 +9,9 @@ import useProduct from "../../hooks/product/useProduct";
 const ProductPage = () => {
   const param = useParams();
   const productId = param.productId;
-  const {product} = useProduct(productId);
+  const { product } = useProduct(productId);
   console.log(product);
-  
+
   return (
     <StyledProductPage>
       <div className="container">

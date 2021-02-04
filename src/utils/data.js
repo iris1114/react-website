@@ -8,8 +8,6 @@ import frontImg5 from "../images/card/front/5.jpg";
 import frontImg6 from "../images/card/front/6.jpg";
 import frontImg7 from "../images/card/front/7.jpg";
 
-
-
 export const productList = [
     {
         id: 1,

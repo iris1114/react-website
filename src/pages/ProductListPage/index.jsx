@@ -6,13 +6,13 @@ import { banner } from "../../utils/data";
 import useProductList from "../../hooks/product/useProductList";
 
 const ProductListPage = () => {
-  const {products} = useProductList();
+  const { products } = useProductList();
   return (
     <main>
       <Banner image={`${banner.productList}`} text="Shop" />
       <div className="container">
         <ProductListFilterSection />
-        <ProductListSection  products= {products}/>
+        <ProductListSection products={products} />
       </div>
     </main>
   );

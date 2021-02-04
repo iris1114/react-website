@@ -4,17 +4,19 @@ import CardFrontSection from "./CardFrontSection";
 import CardPreviewSection from "./CardPreviewSection";
 
 const CardPage = () => {
-  return <main>
-    <div className="container">
-      <div className="m-3">
-        <CardFrontSection />
+  return (
+    <main>
+      <div className="container">
+        <div className="m-3">
+          <CardFrontSection />
+        </div>
+        <CardEditSection />
+        <div className="m-3">
+          <CardPreviewSection />
+        </div>
       </div>
-      <CardEditSection/>
-      <div className="m-3">
-      <CardPreviewSection/>
-      </div>
-    </div>
-  </main>;
+    </main>
+  );
 };
 
 export default CardPage;
