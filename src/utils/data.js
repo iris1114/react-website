@@ -1,5 +1,12 @@
 import productBanner from "../images/banner/productBanner.jpg";
 import aboutBanner from "../images/banner/aboutBanner.jpg";
+import frontImg1 from "../images/card/front/1.jpg";
+import frontImg2 from "../images/card/front/2.jpg";
+import frontImg3 from "../images/card/front/3.jpg";
+import frontImg4 from "../images/card/front/4.jpg";
+import frontImg5 from "../images/card/front/5.jpg";
+import frontImg6 from "../images/card/front/6.jpg";
+import frontImg7 from "../images/card/front/7.jpg";
 
 
 
@@ -135,6 +142,16 @@ export const product = {
     dimensions: "50 x 50 x 10cm"
 }
 
+
+export const cardFrontImages = [
+    frontImg1,
+    frontImg2,
+    frontImg3,
+    frontImg4,
+    frontImg5,
+    frontImg6,
+    frontImg7
+]
 
 
     

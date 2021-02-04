@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import { KEY } from "../../utils/key";
+import { GOOGLE_MAP_KEY } from "../../utils/key";
 import styled from "styled-components";
 import { COLOR } from "../../utils/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,7 +30,7 @@ const AboutMapSection = () => {
         <div className="col-12 col-md-6">
           <div className="map">
             <GoogleMapReact
-              bootstrapURLKeys={{ key: KEY }}
+              bootstrapURLKeys={{ key: GOOGLE_MAP_KEY }}
               defaultCenter={center}
               defaultZoom={zoom}
             >
@@ -49,7 +49,7 @@ const AboutMapSection = () => {
 
 const GoogleMapTarget = ({ text }) => (
   <div className="target">
-    <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} size="lg" />
+    <FontAwesomeIcon icon={faMapMarkerAlt} size="lg" />
     <p >{text}</p>
     </div>
 );
