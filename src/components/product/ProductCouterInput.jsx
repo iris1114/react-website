@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { COLOR } from "../../utils/styles";
 
 const ProductCouterInput = ({ quantity, onMinus, onPlus }) => {
-  console.log(quantity);
   return (
     <StyledProductCouterInput>
       <button

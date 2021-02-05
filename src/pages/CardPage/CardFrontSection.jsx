@@ -19,7 +19,6 @@ const CardFrontSection = () => {
   };
 
   const handleDefaultImageChange = (image) => {
-    console.log(image);
     setCardImage(image);
   };
 

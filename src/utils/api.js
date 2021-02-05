@@ -2,7 +2,7 @@ import axios from "axios";
 import { AIR_TABLE_KEY } from "./key";
 
 export const getProducts = async () => {
-  const ProductsData = await axios.get(
+  const productsData = await axios.get(
     `https://api.airtable.com/v0/appVGUlGUw44VRhBm/products/`,
     {
         headers: {
@@ -10,12 +10,19 @@ export const getProducts = async () => {
         }
       }
   );
-  return ProductsData.data.records;
+  return productsData.data.records;
 };
+
+// export const getProduct2 = async () => {
+//   const productsData2 = await axios.get(
+//     `https://cake-backend-demo.herokuapp.com/products`
+//   );
+//   console.log(productsData2);
+// };
 
 
 export const getProduct = async (productId) => {
-    const ProductData = await axios.get(
+    const productData = await axios.get(
       `https://api.airtable.com/v0/appVGUlGUw44VRhBm/products/${productId}`,
       {
           headers: {
@@ -23,7 +30,5 @@ export const getProduct = async (productId) => {
           }
         }
     );
-    let data = ProductData.data.fields;
-    console.log("data",data);
-    return ProductData.data.fields;
+    return productData.data.fields;
 };

@@ -7,7 +7,6 @@ const ProductListSection = ({ products }) => {
     <div className="row justify-content-center justify-content-xl-start">
       {products &&
         products.map((product, index) => {
-          console.log({ product });
           return (
             <Link to={`/shop/${product.id}`} key={index}>
               <ProductCard
