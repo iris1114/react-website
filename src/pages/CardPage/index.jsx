@@ -1,20 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import Loading from "../../components/common/Loading";
+import useCard from "../../hooks/card/useCard";
+import ErrorPage from "../ErrorPage";
 import CardEditSection from "./CardEditSection";
 import CardFrontSection from "./CardFrontSection";
 import CardPreviewSection from "./CardPreviewSection";
 
 const CardPage = () => {
+  const { frontCards, decorations, loading, error } = useCard();
+  const [backImage, setBackImage] = useState(null);
+  const [frontImage, setFrontImage] = useState(null);
+
+  console.log({ backImage });
+  console.log({ frontImage });
+
   return (
     <main>
-      <div className="container">
-        <div className="m-3">
-          <CardFrontSection />
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <ErrorPage />
+      ) : (
+        <div className="container">
+          <CardFrontSection
+            frontCards={frontCards}
+            onFrontPreview={(image) => {
+              setFrontImage(image);
+            }}
+          />
+          <CardEditSection
+            decorations={decorations}
+            onBackPreview={(image) => {
+              setBackImage(image);
+            }}
+          />
+          <CardPreviewSection frontImage={frontImage} backImage={backImage} />
         </div>
-        <CardEditSection />
-        <div className="m-3">
-          <CardPreviewSection />
-        </div>
-      </div>
+      )}
     </main>
   );
 };

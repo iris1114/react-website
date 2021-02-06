@@ -3,7 +3,7 @@ import { AIR_TABLE_KEY } from "./key";
 
 export const getProducts = async () => {
   const productsData = await axios.get(
-    `https://api.airtable.com/v0/appVGUlGUw44VRhBm/products/`,
+    "https://api.airtable.com/v0/appVGUlGUw44VRhBm/products/",
     {
         headers: {
           Authorization: "Bearer " + AIR_TABLE_KEY
@@ -31,4 +31,28 @@ export const getProduct = async (productId) => {
         }
     );
     return productData.data.fields;
+};
+
+export const getFrontCards = async () => {
+  const frontCardsData = await axios.get(
+    "https://api.airtable.com/v0/appVGUlGUw44VRhBm/card_font/",
+    {
+        headers: {
+          Authorization: "Bearer " + AIR_TABLE_KEY
+        }
+      }
+  );
+  return frontCardsData.data.records;
+};
+
+export const getDecorations = async () => {
+  const decorationsData = await axios.get(
+    "https://api.airtable.com/v0/appVGUlGUw44VRhBm/card_decorations/",
+    {
+        headers: {
+          Authorization: "Bearer " + AIR_TABLE_KEY
+        }
+      }
+  );
+  return decorationsData.data.records;
 };
