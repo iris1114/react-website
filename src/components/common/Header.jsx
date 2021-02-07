@@ -22,7 +22,14 @@ const Header = () => {
               Login
             </StyledNavLink>
             <StyledNavLink to="/cart" className="cart-icon">
-              <img src={cartIcon} alt="cart" />
+              <div className="d-flex">
+                <img src={cartIcon} alt="cart" />
+                <div className="cart-number">
+                  <div className="radius">
+                    <p className="number">0</p>
+                  </div>
+                </div>
+              </div>
             </StyledNavLink>
           </Nav>
 
@@ -54,7 +61,7 @@ const Header = () => {
 };
 
 const StyledHeader = styled.header`
-  background-color: #ebe7e4;
+  background-color: ${COLOR.nude};
 
   .logo {
     width: 150px;
@@ -64,6 +71,26 @@ const StyledHeader = styled.header`
   .cart-icon {
     width: 25px;
     display: block;
+  }
+  .cart-number {
+    .radius {
+      border-radius: 50%;
+      border: 1px solid ${COLOR.red};
+      background-color: ${COLOR.red};
+      color: ${COLOR.white};
+      height: 25px;
+      width: 25px;
+      position: relative;
+
+      .number {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 12px;
+        color: ${COLOR.nude};
+      }
+    }
   }
 
   @media (max-width: ${BREAKPOINTS.lg}px) {
@@ -76,6 +103,9 @@ const StyledHeader = styled.header`
     .info-wrap {
       flex-direction: row;
       align-items: center;
+    }
+    .navbar {
+      padding: 0px;
     }
   }
 `;

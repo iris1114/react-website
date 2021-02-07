@@ -1,14 +1,16 @@
 import React from "react";
-import HomeCardSection from "./HomeCardSection";
+// import HomeCardSection from "./HomeCardSection";
 import HomeHeroSection from "./HomeHeroSection";
+import styled from "styled-components";
 
 const HomePage = () => {
   return (
-    <main>
+    <StyledHomepage>
       <HomeHeroSection />
-      <HomeCardSection />
-    </main>
+    </StyledHomepage>
   );
 };
+
+const StyledHomepage = styled.main``;
 
 export default HomePage;

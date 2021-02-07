@@ -3,7 +3,8 @@ export const BREAKPOINTS = {
     sm: 576,
     md: 768,
     lg: 992,
-    xl: 1200
+    xl:1024,
+    xxl: 1200
 };
 
 export const COLOR = {
@@ -13,7 +14,9 @@ export const COLOR = {
     balck: "#000",
     nude:"#ebe7e4",
     darkBrown: "#a9998c",
-    red: "#880000",
-    lightBrown: "#BAADA3"
+    lightBrown: "#BAADA3",
+    lightYellow: "#FDF8F1",
+    red: "#CA0924"
+
 }
   
