@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <div className="container">
-        <Navbar collapseOnSelect expand="lg" sticky="top">
+        <Navbar collapseOnSelect expand="md" sticky="top">
           <Navbar.Brand>
             <StyledNavLink to="/" className="logo">
               <img src={logo} alt="logo" />
