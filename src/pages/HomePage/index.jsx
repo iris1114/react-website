@@ -11,6 +11,8 @@ const HomePage = () => {
   );
 };
 
-const StyledHomepage = styled.main``;
+const StyledHomepage = styled.main`
+  overflow: hidden;
+`;
 
 export default HomePage;

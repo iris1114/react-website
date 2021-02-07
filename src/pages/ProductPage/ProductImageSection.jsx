@@ -3,25 +3,23 @@ import styled from "styled-components";
 import { COLOR } from "../../utils/styles";
 
 const ProductImageSection = ({ product }) => {
-  const [mainImage, setMainImage] = useState(product.images[0].url);
+  const [mainImage, setMainImage] = useState(product.images[0]);
 
-  const handleImageChange = (url) => {
-    setMainImage(url);
-  };
+  console.log({ product });
 
   return (
     <StyledProductImageSection className="d-flex flex-column flex-md-row">
       <div className="d-flex col-12 col-md-3 order-1 flex-md-column order-md-0">
-        {product.images.map((image) => {
+        {product.images.map((image, index) => {
           return (
             <div
               className="small-image mb-2 m-1"
-              key={image.id}
+              key={index}
               onClick={() => {
-                handleImageChange(image.url);
+                setMainImage(image);
               }}
             >
-              <img src={image.url} alt={product.name} />
+              <img src={image} alt={product.name} />
             </div>
           );
         })}

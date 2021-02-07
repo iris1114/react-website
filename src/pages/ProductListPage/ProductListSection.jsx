@@ -10,9 +10,9 @@ const ProductListSection = ({ products }) => {
           return (
             <Link to={`/shop/${product.id}`} key={index}>
               <ProductCard
-                image={product.fields.images[0].url}
-                name={product.fields.name}
-                price={product.fields.price}
+                image={product.image}
+                name={product.name}
+                price={product.price}
               />
             </Link>
           );

@@ -3,6 +3,9 @@ import Button from "../components/common/Button";
 import styled from "styled-components";
 import UserLoginSignUpTab from "../components/user/UserLoginSignUptab";
 import bg from "../images/user/cakeBg.jpg";
+import { getSignUp, getLogin } from "../utils/api.js";
+import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
 
 const SignUpPage = () => {
   const defaultData = {
@@ -10,6 +13,7 @@ const SignUpPage = () => {
     username: "",
     password: "",
   };
+  const history = useHistory();
   const [signUpData, setSignUpData] = useState(defaultData);
 
   const handleSignUpEmail = (e) => {
@@ -34,18 +38,29 @@ const SignUpPage = () => {
   };
 
   const handleSignUp = () => {
-    //     getSignUp(signUpData)
-    //       .then((res) => {
-    //         if (res.data.code === "SUCCESS") {
-    //           history.push(`users/`); // 需取得userId
-    //         } else {
-    //           alert(`message: ${res.data.message}`);
-    //           setSignUpData(defaultData);
-    //         }
-    //       })
-    //       .catch((error) => {
-    //         alert(error.data.message);
-    //       });
+    getSignUp(signUpData)
+      .then((res) => {
+        if (res.data.status === "success!") {
+          Swal.fire({
+            icon: "success",
+            title: "You have signed up successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .then(() => {
+        getLogin(signUpData.username, signUpData.password).then((res) => {
+          console.log(res);
+          history.push("/shop");
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "warning",
+          title: error.response.data.detail,
+        });
+      });
   };
 
   return (
@@ -76,7 +91,9 @@ const SignUpPage = () => {
             value={signUpData.password}
           />
         </div>
-        <Button text="sign up" onClick={handleSignUp} />
+        <div onClick={handleSignUp}>
+          <Button text="sign up" />
+        </div>
       </div>
     </StyledSignUpPage>
   );

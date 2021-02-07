@@ -1,36 +1,22 @@
 import axios from "axios";
 import { AIR_TABLE_KEY } from "./key";
 
+
 export const getProducts = async () => {
   const productsData = await axios.get(
-    "https://api.airtable.com/v0/appVGUlGUw44VRhBm/products/",
-    {
-        headers: {
-          Authorization: "Bearer " + AIR_TABLE_KEY
-        }
-      }
+    `https://cake-backend-demo.herokuapp.com/products`
   );
-  return productsData.data.records;
+  console.log(productsData);
+  return productsData.data;
 };
-
-// export const getProduct2 = async () => {
-//   const productsData2 = await axios.get(
-//     `https://cake-backend-demo.herokuapp.com/products`
-//   );
-//   console.log(productsData2);
-// };
 
 
 export const getProduct = async (productId) => {
     const productData = await axios.get(
-      `https://api.airtable.com/v0/appVGUlGUw44VRhBm/products/${productId}`,
-      {
-          headers: {
-            Authorization: "Bearer " + AIR_TABLE_KEY
-          }
-        }
+      `https://cake-backend-demo.herokuapp.com/products/${productId}`
     );
-    return productData.data.fields;
+    console.log(productData);
+    return productData.data;
 };
 
 export const getFrontCards = async () => {
@@ -56,3 +42,50 @@ export const getDecorations = async () => {
   );
   return decorationsData.data.records;
 };
+
+
+export const getSignUp = async (signUpData) =>{
+  const registerRes = axios.post(
+    "https://cake-backend-demo.herokuapp.com/signup",
+    {
+      "username": signUpData.username,
+      "email": signUpData.email,
+      "password": signUpData.password
+    }
+  );
+  return registerRes;
+}
+export const getLogin =  () =>{
+  let details = {
+    "grant_type" : "",
+    "username": "iris",
+    "password": "iris",
+    "scope": "",
+    "client_id" : "",
+    "client_secret" : ""
+
+  }
+  let formBody = [];
+  for (let property in details) {
+    let encodedKey = encodeURIComponent(property);
+    let encodedValue = encodeURIComponent(details[property]);
+    formBody.push(encodedKey + "=" + encodedValue);
+  }
+  formBody = formBody.join("&");
+  
+  const loginRes = axios.post(
+    "https://cake-backend-demo.herokuapp.com/auth/token",
+    {
+      formBody
+    },
+    {
+      headers: {
+        'Content-Type': "application/x-www-form-urlencoded",
+        "accept": "application/json"
+      }
+    }
+    
+  );
+  
+  return loginRes;
+}

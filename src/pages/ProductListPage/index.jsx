@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "../../components/common/Banner";
-import ProductListFilterSection from "./ProductListFilterSection";
+// import ProductListFilterSection from "./ProductListFilterSection";
 import ProductListSection from "./ProductListSection";
 import { banner } from "../../utils/data";
 import useProductList from "../../hooks/product/useProductList";
@@ -20,7 +20,7 @@ const ProductListPage = () => {
         <>
           <Banner image={`${banner.productList}`} text="Shop" />
           <div className="container">
-            <ProductListFilterSection />
+            {/* <ProductListFilterSection /> */}
             <ProductListSection products={products} />
           </div>
         </>
