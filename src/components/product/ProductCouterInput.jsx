@@ -45,12 +45,17 @@ const StyledProductCouterInput = styled.div`
   input {
     border: 1px solid ${COLOR.gold};
     height: 34px;
-    width: 130px;
+    width: 80px;
     border-right: 0px;
     border-left: 0px;
     text-align: center;
     color: ${COLOR.gold};
   }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+
 `;
 
 export default ProductCouterInput;

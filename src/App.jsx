@@ -13,6 +13,7 @@ import Footer from "./components/common/Footer";
 import ProductPage from "./pages/ProductPage";
 import MemberPage from "./pages/MemberPage";
 import SignUpPage from "./pages/SignUpPage";
+import CompletePage from "./pages/CompletePage";
 
 const App = () => {
   return (
@@ -45,6 +46,9 @@ const App = () => {
         </Route>
         <Route path="/member" exact>
           <MemberPage />
+        </Route>
+        <Route path="/complete" exact>
+          <CompletePage />
         </Route>
       </Switch>
       <Footer />
