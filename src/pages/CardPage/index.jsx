@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Loading from "../../components/common/Loading";
 import useCard from "../../hooks/card/useCard";
 import ErrorPage from "../ErrorPage";
-import CardEditSection from "./CardEditSection";
+import CardBackSection from "./CardBackSection";
 import CardFrontSection from "./CardFrontSection";
 import CardPreviewSection from "./CardPreviewSection";
 
@@ -10,9 +10,6 @@ const CardPage = () => {
   const { frontCards, decorations, loading, error } = useCard();
   const [backImage, setBackImage] = useState(null);
   const [frontImage, setFrontImage] = useState(null);
-
-  console.log({ backImage });
-  console.log({ frontImage });
 
   return (
     <main>
@@ -28,7 +25,7 @@ const CardPage = () => {
               setFrontImage(image);
             }}
           />
-          <CardEditSection
+          <CardBackSection
             decorations={decorations}
             onBackPreview={(image) => {
               setBackImage(image);

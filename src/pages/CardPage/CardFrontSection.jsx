@@ -22,7 +22,7 @@ const CardFrontSection = ({ frontCards, onFrontPreview }) => {
     setCardImage(image);
   };
 
-  const handleNextClick = () => {
+  const handleDoneClick = () => {
     onFrontPreview && onFrontPreview(cardImage);
   };
 
@@ -30,8 +30,8 @@ const CardFrontSection = ({ frontCards, onFrontPreview }) => {
     <StyledCardFrontSection>
       <h3 className="f-lg-3xl text-center mb-3">Card - Front</h3>
       <div className="d-flex align-items-center flex-wrap">
-        <div className="col-12 col-md-7 card-area">
-          <img src={cardImage} alt="card" />
+        <div className="col-12 col-md-7">
+          <img src={cardImage} alt="card" className="card-area" />
         </div>
 
         <div className="col-12 col-md-5 select-area">
@@ -69,7 +69,7 @@ const CardFrontSection = ({ frontCards, onFrontPreview }) => {
           </div>
         </div>
         <div className="mx-auto m-2">
-          <Button text="Next" onButtonClick={handleNextClick} />
+          <Button text="Done" onButtonClick={handleDoneClick} />
         </div>
       </div>
     </StyledCardFrontSection>

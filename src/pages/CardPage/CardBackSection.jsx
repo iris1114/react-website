@@ -6,7 +6,7 @@ import { FormControl } from "react-bootstrap";
 import Decoration from "../../components/card/Decoration";
 import Button from "../../components/common/Button";
 
-const CardEditSection = ({ decorations, onBackPreview }) => {
+const CardBackSection = ({ decorations, onBackPreview }) => {
   const initialRectangles = [
     {
       x: 10,
@@ -69,13 +69,13 @@ const CardEditSection = ({ decorations, onBackPreview }) => {
     setEditable(false);
   };
 
-  const handleNextClick = () => {
+  const handleDoneClick = () => {
     const uri = stageRef.current.toDataURL();
     onBackPreview && onBackPreview(uri);
   };
 
   return (
-    <StyledCardEditSection>
+    <StyledCardBackSection>
       <h3 className="f-lg-3xl text-center mb-3">Card - Back</h3>
       <div className="d-flex align-items-center flex-wrap">
         <div className="col-12 col-md-7 card-area">
@@ -177,14 +177,14 @@ const CardEditSection = ({ decorations, onBackPreview }) => {
           <div className="mr-2">
             <Button text="Clear" onButtonClick={handleClearClick} />
           </div>
-          <Button text="Next" onButtonClick={handleNextClick} />
+          <Button text="Done" onButtonClick={handleDoneClick} />
         </div>
       </div>
-    </StyledCardEditSection>
+    </StyledCardBackSection>
   );
 };
 
-const StyledCardEditSection = styled.section`
+const StyledCardBackSection = styled.section`
   margin: 50px 0px;
   background-color: ${COLOR.darkBrown};
   padding: 15px;
@@ -236,4 +236,4 @@ const StyledCardEditSection = styled.section`
   }
 `;
 
-export default CardEditSection;
+export default CardBackSection;
