@@ -8,11 +8,11 @@ import ProductListPage from "./pages/ProductListPage";
 import CartPage from "./pages/CartPage";
 import Switch from "react-bootstrap/esm/Switch";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./index.css";
 import Footer from "./components/common/Footer";
 import ProductPage from "./pages/ProductPage";
 import MemberPage from "./pages/MemberPage";
+import SignUpPage from "./pages/SignUpPage";
 
 const App = () => {
   return (
@@ -36,6 +36,9 @@ const App = () => {
         </Route>
         <Route path="/login" exact>
           <LoginPage />
+        </Route>
+        <Route path="/signup" exact>
+          <SignUpPage />
         </Route>
         <Route path="/cart" exact>
           <CartPage />
