@@ -6,8 +6,20 @@ import defaultBackImage from "../../images/card/defaultBack.png";
 import Button from "../../components/common/Button";
 
 const CardPreviewSection = ({ frontImage, backImage }) => {
-  const dowloadFrontClick = () => {};
-  const dowloadBackClick = () => {};
+  const dowloadFrontClick = (e) => {
+    let element = document.createElement("a");
+    let file = new Blob([frontImage], { type: "image/*" });
+    element.href = URL.createObjectURL(file);
+    element.download = "card_front.jpg";
+    element.click();
+  };
+  const dowloadBackClick = () => {
+    let element = document.createElement("a");
+    let file = new Blob([backImage], { type: "image/*" });
+    element.href = URL.createObjectURL(file);
+    element.download = "card_back.jpg";
+    element.click();
+  };
   return (
     <StyledCardPreviewSection>
       <h3 className="f-lg-3xl text-center mb-3">Preview</h3>
@@ -21,10 +33,14 @@ const CardPreviewSection = ({ frontImage, backImage }) => {
       </div>
       <div className="d-flex flex-wrap mb-3">
         <div className="col-12 col-md-6 text-center">
-          <Button text="Download-fron" onButtonClick={dowloadFrontClick} />
+          <a href={frontImage} download onClick={dowloadFrontClick}>
+            <Button text="Download-fron" />
+          </a>
         </div>
         <div className="col-12 col-md-6 text-center">
-          <Button text="Download-back" onButtonClick={dowloadBackClick} />
+          <a href={backImage} download onClick={dowloadBackClick}>
+            <Button text="Download-back" />
+          </a>
         </div>
       </div>
       <div className="text-center">
