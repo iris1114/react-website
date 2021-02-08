@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getCarts } from "../../utils/api";
+import CartsContext from "../../components/cart/CartsContext";
 
-const useCarts = (localAuthToken) => {
-  const [carts, setCarts] = useState(null);
+
+
+const useCarts = (authToken) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [emptyCarts, setEmptyCarts] = useState(true);
+  const { cartsData, setCartsData } = useContext(CartsContext);
 
   useEffect(() => {
     setIsLoading(true);
-    getCarts(localAuthToken)
+    if (authToken) {
+    getCarts(authToken)
       .then((res) => {
-       setCarts(res)
+        setCartsData(res);
+       setEmptyCarts(false);
       })
       .catch((error) => {
         console.log(error.message);
@@ -20,12 +25,17 @@ const useCarts = (localAuthToken) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [localAuthToken]);
+    }else {
+      setIsLoading(false);
+      setEmptyCarts(true);
+    }
+  }, [authToken]);
 
   return {
-    carts,
+    cartsData,
     loading: isLoading,
-    error
+    error,
+    emptyCarts
   };
 };
 

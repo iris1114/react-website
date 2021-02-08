@@ -6,7 +6,6 @@ export const getProducts = async () => {
   const productsData = await axios.get(
     `https://cake-backend-demo.herokuapp.com/products`
   );
-  console.log(productsData);
   return productsData.data;
 };
 
@@ -15,7 +14,6 @@ export const getProduct = async (productId) => {
     const productData = await axios.get(
       `https://cake-backend-demo.herokuapp.com/products/${productId}`
     );
-    console.log(productData);
     return productData.data;
 };
 
@@ -102,6 +100,5 @@ export const getCarts = async (token) => {
     }
   );
 
-  console.log(cartsData.data)
   return cartsData.data;
 }

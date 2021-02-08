@@ -9,15 +9,15 @@ import AuthContext from "../auth/AuthContext";
 
 const Header = () => {
   const { authData, setAuthData } = useContext(AuthContext);
-  const localAuthToken = localStorage.getItem("authToken");
-  const localAuthCartNum = localStorage.getItem("authCartNum");
-  const localAuthUsername = localStorage.getItem("authUsername");
+  // const localAuthToken = localStorage.getItem("authToken");
+  // const localAuthCartNum = localStorage.getItem("authCartNum");
+  // const localAuthUsername = localStorage.getItem("authUsername");
 
   const handleLogout = () => {
     setAuthData(null);
-    localStorage.clear("authData");
-    localStorage.clear("authCartNum");
-    localStorage.clear("authUsername");
+    // localStorage.clear("authData");
+    // localStorage.clear("authCartNum");
+    // localStorage.clear("authUsername");
   };
 
   console.log(authData);
@@ -33,9 +33,11 @@ const Header = () => {
           </Navbar.Brand>
 
           <Nav className="order-1 order-md-2 info-wrap align-items-center">
-            {localAuthToken && <p className="mr-3">hi , {localAuthUsername}</p>}
+            {authData && authData.access_token ? (
+              <p className="mr-3">hi , {authData.username}</p>
+            ) : null}
 
-            {localAuthToken && authData ? (
+            {authData && authData.access_token ? (
               <div onClick={handleLogout}>
                 <StyledNavLink to={"/"} className="login mr-2 mr-md-4">
                   Logout
@@ -49,10 +51,10 @@ const Header = () => {
             <StyledNavLink to="/cart" className="cart-icon">
               <div className="d-flex">
                 <img src={cartIcon} alt="cart" />
-                {localAuthToken ? (
+                {authData && authData.access_token ? (
                   <div className="cart-number">
                     <div className="radius">
-                      <p className="number">{localAuthCartNum}</p>
+                      <p className="number">{authData.num_carts}</p>
                     </div>
                   </div>
                 ) : null}

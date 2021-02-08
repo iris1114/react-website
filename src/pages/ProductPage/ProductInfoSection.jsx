@@ -1,10 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "../../components/common/Button";
 import styled from "styled-components";
 import ProductCouterInput from "../../components/product/ProductCouterInput";
+import AuthContext from "../../components/auth/AuthContext";
+import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductInfoSection = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
+  const { authData, setAuthData } = useContext(AuthContext);
+  const history = useHistory();
+
+  const handleCartClick = () => {
+    if (authData.access_token) {
+      Swal.fire({
+        icon: "success",
+        title: "Added Successfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      setAuthData({
+        ...authData,
+        num_carts: authData.num_carts + quantity,
+      });
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Please Login.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      history.push("/login");
+    }
+  };
 
   return (
     <StyledProductInfoSection>
@@ -15,10 +44,23 @@ const ProductInfoSection = ({ product }) => {
       </div>
       <div>
         <div className="mb-5">
-          <ProductCouterInput quantity={quantity} />
+          <ProductCouterInput
+            quantity={quantity}
+            onMinus={() => {
+              if (quantity > 1) {
+                setQuantity(quantity - 1);
+              } else {
+                setQuantity(1);
+              }
+            }}
+            onPlus={() => {
+              setQuantity(quantity + 1);
+            }}
+          />
         </div>
-
-        <Button text="Add To Cart" variant="primary" />
+        <div onClick={handleCartClick}>
+          <Button text="Add To Cart" variant="primary" />
+        </div>
       </div>
     </StyledProductInfoSection>
   );

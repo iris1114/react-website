@@ -33,13 +33,11 @@ const LoginPage = () => {
     });
   };
 
-  console.log(loginData);
   const { setAuthData } = useContext(AuthContext);
 
   const handleLoginClick = () => {
     getLogin(loginData.username, loginData.password)
       .then((res) => {
-        console.log(res);
         localAuthData(res.data);
         setAuthData(res.data);
         if (res.data.access_token) {

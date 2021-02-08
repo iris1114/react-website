@@ -1,48 +1,54 @@
-import React from "react";
+import React, { useContext } from "react";
 import CartItemBlock from "../../components/cart/CartItemBlock";
-// import CartTitleSection from "./CartTitleSection";
+import CartTitleSection from "./CartTitleSection";
 import styled from "styled-components";
-import { defaultCarts } from "../../utils/data";
-// import CartTotalSection from "./CartTotalSection";
-// import useCarts from "../../hooks/cart/useCarts";
-// import Loading from "../../components/common/Loading";
-// import ErrorPage from "../ErrorPage";
-// import { getCarts } from "../../utils/api";
+import CartTotalSection from "./CartTotalSection";
+import AuthContext from "../../components/auth/AuthContext";
+import Button from "../../components/common/Button";
+import { Link } from "react-router-dom";
+import useCarts from "../../hooks/cart/useCarts";
+import Loading from "../../components/common/Loading";
+import ErrorPage from "../ErrorPage";
+// import CartsContext from "../../components/cart/CartsContext";
 
 const CartPage = () => {
-  // const localAuthToken = localStorage.getItem("authToken");
-  // const [loggedInCarts, setLoggedInCarts] = useState(null);
-
-  // useEffect(() => {
-  //   if (localAuthToken) {
-  //     getCarts(localAuthToken)
-  //       .then((res) => {
-  //         setLoggedInCarts(res);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }, [localAuthToken]);
+  const { authData } = useContext(AuthContext);
+  const authToken = authData.access_token;
+  const { cartsData, loading, error, emptyCarts } = useCarts(authToken);
 
   return (
     <StyledCartPage>
-      <div className="container">
-        {/* {() => {
-          if (localAuthToken) {
-            defaultCarts.map((loggedInCart, index) => {
-              return <CartItemBlock loggedInCart={loggedInCart} key={index} />;
-            });
-          }
-        }} */}
-        {defaultCarts.map((cartItem, index) => {
-          return (
-            <div key={index +new Date()}>
-              <CartItemBlock item={cartItem} />
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <ErrorPage />
+      ) : (
+        <div className="container">
+          {emptyCarts ? (
+            <div className="text-center">
+              <p className="mb-5">
+                The cart is now empty. Select some products to buy before
+                checking out.
+              </p>
+              <Link to="/shop">
+                <Button text="Go To Shop" />
+              </Link>
             </div>
-          );
-        })}
-      </div>
+          ) : (
+            <>
+              <CartTitleSection />
+              {cartsData.map((cartItem, index) => {
+                return (
+                  <div key={index + new Date()}>
+                    <CartItemBlock item={cartItem} />
+                  </div>
+                );
+              })}
+              <CartTotalSection />
+            </>
+          )}
+        </div>
+      )}
     </StyledCartPage>
   );
 };

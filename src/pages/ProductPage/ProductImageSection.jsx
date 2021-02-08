@@ -5,8 +5,6 @@ import { COLOR } from "../../utils/styles";
 const ProductImageSection = ({ product }) => {
   const [mainImage, setMainImage] = useState(product.images[0]);
 
-  console.log({ product });
-
   return (
     <StyledProductImageSection className="d-flex flex-column flex-md-row">
       <div className="d-flex col-12 col-md-3 order-1 flex-md-column order-md-0">
