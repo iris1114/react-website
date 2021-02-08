@@ -151,3 +151,166 @@ export const cardFrontImages = [
 
 
     
+export const defaultCarts = [
+    {
+      "card": [
+        "recBuwTaIWMZpjtpt"
+      ],
+      "quantity": 1,
+      "id": 3,
+      "user": [
+        "recnKXNaCFLJ749ki"
+      ],
+      "card_id": [
+        1
+      ],
+      "card_name": [
+        "your card"
+      ],
+      "card_front": [
+        {
+          "id": "atttVHsTm0M6KLNeC",
+          "url": "https://dl.airtable.com/.attachments/5bc9ec49eccc0aa0f975306af8713a68/05e37a5e/1.jpg",
+          "filename": "1.jpg",
+          "size": 96781,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/dc3f8a82e5c98fe99bea585f33e6061d/dd93a4c2",
+              "width": 51,
+              "height": 36
+            },
+            "large": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/c22fad3e5676084987fb386a42997735/2d800d6e",
+              "width": 721,
+              "height": 512
+            },
+            "full": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/f5026b51870383c8ac087293029b4802/a7d17172",
+              "width": 3000,
+              "height": 3000
+            }
+          }
+        }
+      ],
+      "card_back": [
+        {
+          "id": "atttVHsTm0M6KLNeC",
+          "url": "https://dl.airtable.com/.attachments/5bc9ec49eccc0aa0f975306af8713a68/05e37a5e/1.jpg",
+          "filename": "1.jpg",
+          "size": 96781,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/dc3f8a82e5c98fe99bea585f33e6061d/dd93a4c2",
+              "width": 51,
+              "height": 36
+            },
+            "large": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/c22fad3e5676084987fb386a42997735/2d800d6e",
+              "width": 721,
+              "height": 512
+            },
+            "full": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/f5026b51870383c8ac087293029b4802/a7d17172",
+              "width": 3000,
+              "height": 3000
+            }
+          }
+        }
+      ],
+      "created_time": "2021-02-06T09:24:11.000Z"
+    },
+    {
+      "quantity": 1,
+      "product": [
+        "recTVY6z3N48TjU6B"
+      ],
+      "id": 2,
+      "user": [
+        "recnKXNaCFLJ749ki"
+      ],
+      "product_id": [
+        5
+      ],
+      "product_name": [
+        "Favna Double Cheese"
+      ],
+      "product_price": [
+        150
+      ],
+      "product_main_image": [
+        {
+          "id": "att90HkRkN6tmXSxu",
+          "url": "https://dl.airtable.com/.attachments/a1b1e9959a1be29c6e28b615cf1d220a/248c4418/purple7.jpeg",
+          "filename": "purple 7.jpeg",
+          "size": 162079,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/2b8ea69984ddae76736e7bb7c665dc77/a473cc26",
+              "width": 36,
+              "height": 36
+            },
+            "large": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/432e640b6d5b647c6567d56861eb345e/625a884d",
+              "width": 500,
+              "height": 500
+            },
+            "full": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/c77b1d74d1d409f207914710d9336aa9/3fd8d226",
+              "width": 3000,
+              "height": 3000
+            }
+          }
+        }
+      ],
+      "created_time": "2021-02-06T09:23:28.000Z"
+    },
+    {
+      "quantity": 2,
+      "product": [
+        "recmXMCWYp5Vyqp9F"
+      ],
+      "id": 1,
+      "user": [
+        "recnKXNaCFLJ749ki"
+      ],
+      "product_id": [
+        1
+      ],
+      "product_name": [
+        "Matcha Cake"
+      ],
+      "product_price": [
+        150
+      ],
+      "product_main_image": [
+        {
+          "id": "att71UIQCgRCWoEVh",
+          "url": "https://dl.airtable.com/.attachments/0ae7a49b0c723a1cb995522215ffa8eb/e12fb3e6/5.jpeg",
+          "filename": "5.jpeg",
+          "size": 14071,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/a7fd0b2c1eaa8a8fb853fc726450da01/3fc0c4fb",
+              "width": 36,
+              "height": 36
+            },
+            "large": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/f258764e2820e460506dcf10ccd291e0/0cca77ae",
+              "width": 300,
+              "height": 300
+            },
+            "full": {
+              "url": "https://dl.airtable.com/.attachmentThumbnails/0e4a344e3b20a7a1396aa919da8986f1/1fcab660",
+              "width": 3000,
+              "height": 3000
+            }
+          }
+        }
+      ],
+      "created_time": "2021-02-05T02:44:58.000Z"
+    }
+  ]

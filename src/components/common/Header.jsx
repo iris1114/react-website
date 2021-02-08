@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 import logo from "../../images/common/logo.png";
 import cartIcon from "../../images/common/cartIcon.png";
 import { BREAKPOINTS, COLOR } from "../../utils/styles";
 import { Link } from "react-router-dom";
+import AuthContext from "../auth/AuthContext";
 
 const Header = () => {
+  const { authData, setAuthData } = useContext(AuthContext);
+  const localAuthToken = localStorage.getItem("authToken");
+  const localAuthCartNum = localStorage.getItem("authCartNum");
+  const localAuthUsername = localStorage.getItem("authUsername");
+
+  const handleLogout = () => {
+    setAuthData(null);
+    localStorage.clear("authData");
+    localStorage.clear("authCartNum");
+    localStorage.clear("authUsername");
+  };
+
+  console.log(authData);
+
   return (
     <StyledHeader>
       <div className="container">
@@ -18,17 +33,29 @@ const Header = () => {
           </Navbar.Brand>
 
           <Nav className="order-1 order-md-2 info-wrap align-items-center">
-            <StyledNavLink to={"/login"} className="login mr-2 mr-md-4">
-              Login
-            </StyledNavLink>
+            {localAuthToken && <p className="mr-3">hi , {localAuthUsername}</p>}
+
+            {localAuthToken && authData ? (
+              <div onClick={handleLogout}>
+                <StyledNavLink to={"/"} className="login mr-2 mr-md-4">
+                  Logout
+                </StyledNavLink>
+              </div>
+            ) : (
+              <StyledNavLink to={"/login"} className="login mr-2 mr-md-4">
+                Login
+              </StyledNavLink>
+            )}
             <StyledNavLink to="/cart" className="cart-icon">
               <div className="d-flex">
                 <img src={cartIcon} alt="cart" />
-                <div className="cart-number">
-                  <div className="radius">
-                    <p className="number">0</p>
+                {localAuthToken ? (
+                  <div className="cart-number">
+                    <div className="radius">
+                      <p className="number">{localAuthCartNum}</p>
+                    </div>
                   </div>
-                </div>
+                ) : null}
               </div>
             </StyledNavLink>
           </Nav>

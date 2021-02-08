@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "../components/common/Button";
 import styled from "styled-components";
 import UserLoginSignUpTab from "../components/user/UserLoginSignUptab";
@@ -6,6 +6,8 @@ import bg from "../images/user/cakeBg.jpg";
 import { getSignUp, getLogin } from "../utils/api.js";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
+import { localAuthData } from "../utils/localStorage";
+import AuthContext from "../components/auth/AuthContext";
 
 const SignUpPage = () => {
   const defaultData = {
@@ -13,8 +15,10 @@ const SignUpPage = () => {
     username: "",
     password: "",
   };
-  const history = useHistory();
+
   const [signUpData, setSignUpData] = useState(defaultData);
+  const { setAuthData } = useContext(AuthContext);
+  const history = useHistory();
 
   const handleSignUpEmail = (e) => {
     setSignUpData({
@@ -51,7 +55,8 @@ const SignUpPage = () => {
       })
       .then(() => {
         getLogin(signUpData.username, signUpData.password).then((res) => {
-          console.log(res);
+          localAuthData(res.data);
+          setAuthData(res.data);
           history.push("/shop");
         });
       })

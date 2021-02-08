@@ -55,15 +55,14 @@ export const getSignUp = async (signUpData) =>{
   );
   return registerRes;
 }
-export const getLogin =  () =>{
-  let details = {
+export const getLogin =  (username,password) =>{
+  const details = {
     "grant_type" : "",
-    "username": "iris",
-    "password": "iris",
+    "username": username,
+    "password": password,
     "scope": "",
     "client_id" : "",
     "client_secret" : ""
-
   }
   let formBody = [];
   for (let property in details) {
@@ -88,4 +87,21 @@ export const getLogin =  () =>{
   );
   
   return loginRes;
+}
+
+
+export const getCarts = async (token) => {
+  
+  const cartsData = await axios.get(
+    "https://cake-backend-demo.herokuapp.com/carts",
+    {
+      headers: {
+        Authorization: "Bearer " +token,
+        Accept : "application/json"
+      }
+    }
+  );
+
+  console.log(cartsData.data)
+  return cartsData.data;
 }

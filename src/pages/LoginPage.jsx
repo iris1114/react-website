@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "../components/common/Button";
 import styled from "styled-components";
 import UserLoginSignUpTab from "../components/user/UserLoginSignUptab";
@@ -6,6 +6,8 @@ import bg from "../images/user/cakeBg.jpg";
 import { getLogin } from "../utils/api.js";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
+import AuthContext from "../components/auth/AuthContext";
+import { localAuthData } from "../utils/localStorage";
 
 const LoginPage = () => {
   const defaultData = {
@@ -32,11 +34,14 @@ const LoginPage = () => {
   };
 
   console.log(loginData);
+  const { setAuthData } = useContext(AuthContext);
 
   const handleLoginClick = () => {
     getLogin(loginData.username, loginData.password)
       .then((res) => {
         console.log(res);
+        localAuthData(res.data);
+        setAuthData(res.data);
         if (res.data.access_token) {
           Swal.fire({
             icon: "success",
@@ -69,7 +74,7 @@ const LoginPage = () => {
             value={loginData.username}
           />
           <input
-            type="text"
+            type="password"
             className="form-control mb-5"
             placeholder="Password"
             onChange={handlePasswordChange}

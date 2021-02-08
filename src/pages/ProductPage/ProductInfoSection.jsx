@@ -5,6 +5,7 @@ import ProductCouterInput from "../../components/product/ProductCouterInput";
 
 const ProductInfoSection = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
+
   return (
     <StyledProductInfoSection>
       <div className="mb-5">
