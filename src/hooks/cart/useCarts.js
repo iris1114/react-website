@@ -2,8 +2,6 @@ import { useEffect, useState, useContext } from "react";
 import { getCarts } from "../../utils/api";
 import CartsContext from "../../components/cart/CartsContext";
 
-
-
 const useCarts = (authToken) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +14,14 @@ const useCarts = (authToken) => {
     getCarts(authToken)
       .then((res) => {
         setCartsData(res);
-       setEmptyCarts(false);
+        setEmptyCarts(false);
+      })
+      .then(()=>{
+        if(cartsData){
+          setEmptyCarts(false);
+        }else{
+          setEmptyCarts(true);
+        }
       })
       .catch((error) => {
         console.log(error.message);

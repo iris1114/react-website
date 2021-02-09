@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { COLOR } from "../../utils/styles";
 
-const ProductCouterInput = ({ quantity, onMinus, onPlus, onQuantity }) => {
+const ProductCouterInput = ({ quantity, onMinus, onPlus }) => {
   return (
     <StyledProductCouterInput>
       <button
@@ -13,13 +13,7 @@ const ProductCouterInput = ({ quantity, onMinus, onPlus, onQuantity }) => {
       >
         -
       </button>
-      <input
-        type="number"
-        value={quantity}
-        onChange={() => {
-          onQuantity && onQuantity();
-        }}
-      />
+      <div className="quantity">{quantity}</div>
       <button
         className="f-lg-2xl"
         onClick={() => {
@@ -34,6 +28,7 @@ const ProductCouterInput = ({ quantity, onMinus, onPlus, onQuantity }) => {
 
 const StyledProductCouterInput = styled.div`
   display: flex;
+  align-items: center;
 
   button {
     text-decoration: none;
@@ -41,6 +36,7 @@ const StyledProductCouterInput = styled.div`
     border: 1px solid ${COLOR.gold};
     padding: 0px 10px;
     color: ${COLOR.gold};
+    height: 34px;
 
     &:hover {
       background: ${COLOR.gold};
@@ -48,20 +44,16 @@ const StyledProductCouterInput = styled.div`
     }
   }
 
-  input {
+  .quantity {
     border: 1px solid ${COLOR.gold};
-    height: 34px;
-    width: 80px;
-    border-right: 0px;
-    border-left: 0px;
-    text-align: center;
     color: ${COLOR.gold};
+    border-left: none;
+    border-right: none;
+    line-height: 34px;
+    height: 34px;
+    width: 60px;
+    text-align: center;
   }
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-
 `;
 
 export default ProductCouterInput;

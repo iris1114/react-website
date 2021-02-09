@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import CartItemBlock from "../../components/cart/CartItemBlock";
 import CartTitleSection from "./CartTitleSection";
 import styled from "styled-components";
 import CartTotalSection from "./CartTotalSection";
@@ -9,12 +8,12 @@ import { Link } from "react-router-dom";
 import useCarts from "../../hooks/cart/useCarts";
 import Loading from "../../components/common/Loading";
 import ErrorPage from "../ErrorPage";
-// import CartsContext from "../../components/cart/CartsContext";
+import CartItemsSection from "./CartItemsSection";
 
 const CartPage = () => {
   const { authData } = useContext(AuthContext);
   const authToken = authData.access_token;
-  const { cartsData, loading, error, emptyCarts } = useCarts(authToken);
+  const { loading, error, emptyCarts } = useCarts(authToken);
 
   return (
     <StyledCartPage>
@@ -37,13 +36,7 @@ const CartPage = () => {
           ) : (
             <>
               <CartTitleSection />
-              {cartsData.map((cartItem, index) => {
-                return (
-                  <div key={index + new Date()}>
-                    <CartItemBlock item={cartItem} />
-                  </div>
-                );
-              })}
+              <CartItemsSection />
               <CartTotalSection />
             </>
           )}

@@ -1,39 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import ProductCouterInput from "../../components/product/ProductCouterInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { COLOR } from "../../utils/styles";
-import CartsContext from "./CartsContext";
 
-const CartItemBlock = ({ item }) => {
-  const [quantity, setQuantity] = useState(item.quantity);
-  const [totalPrice, setTotalPrice] = useState(item.total_price);
-
-  // const { cartsData, setCartsData } = useContext(CartsContext);
-
-  const handleMinusClick = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    } else {
-      setQuantity(1);
-    }
-  };
-
-  const handlePlusClick = () => {
-    setQuantity(quantity + 1);
-  };
-
-  useEffect(() => {
-    setTotalPrice(item.product_price * quantity);
-    // for (const index in cartsData) {
-    //   cartsData[index].total_price = totalPrice;
-    // setCartsData({item.total_price: totalPrice});
-    // }
-  }, [quantity]);
-
-  console.log();
-
+const CartItemBlock = ({
+  item,
+  index,
+  onDelete,
+  onBlockMinus,
+  onBlockPlus,
+}) => {
   return (
     <StyledCartItemBlock>
       <div className="row align-items-center text-center">
@@ -51,15 +29,36 @@ const CartItemBlock = ({ item }) => {
         <div className="col-12 col-md-5 d-flex align-items-center justify-content-center">
           <div className="col-5 col-md-5">
             <ProductCouterInput
-              quantity={item.card_front ? 1 : quantity}
-              onMinus={handleMinusClick}
-              onPlus={handlePlusClick}
+              quantity={item.card_front ? 1 : item.quantity}
+              onMinus={() => {
+                onBlockMinus &&
+                  onBlockMinus(
+                    index,
+                    item.quantity,
+                    item.id,
+                    item.product_price
+                  );
+              }}
+              onPlus={() => {
+                onBlockPlus &&
+                  onBlockPlus(
+                    index,
+                    item.quantity,
+                    item.id,
+                    item.product_price
+                  );
+              }}
             />
           </div>
           <div className="col-5 col-md-5">
-            {item.card_price ? 0 : totalPrice}
+            {item.card_price ? 0 : item.total_price}
           </div>
-          <div className="col-2 col-md-2 cursor-pointer">
+          <div
+            className="col-2 col-md-2 cursor-pointer"
+            onClick={() => {
+              onDelete && onDelete(index, item.quantity, item.id);
+            }}
+          >
             <FontAwesomeIcon icon={faTrashAlt} size="lg" />
           </div>
         </div>

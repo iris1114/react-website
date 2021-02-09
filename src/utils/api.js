@@ -53,6 +53,7 @@ export const getSignUp = async (signUpData) =>{
   );
   return registerRes;
 }
+
 export const getLogin =  (username,password) =>{
   const details = {
     "grant_type" : "",
@@ -102,3 +103,88 @@ export const getCarts = async (token) => {
 
   return cartsData.data;
 }
+
+export const addProductToCart = async (token, productId, quantity) =>{
+  console.log(token,productId,quantity)
+  const addProductToCartRes =  axios.post(
+    "https://cake-backend-demo.herokuapp.com/add_product_to_carts",
+    {
+      "id" : productId ,
+      "quantity": quantity
+    },
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept : "application/json"
+      }
+    }
+  );
+
+  console.log({addProductToCartRes});
+
+}
+
+export const addCardToCart = async (token, frontImage, backImage) =>{
+  
+  const addCardToCartRes = axios.post(
+    "https://cake-backend-demo.herokuapp.com/add_card_to_carts",
+    {
+      "name": "Custom Card",
+      "front":  frontImage,
+      "back": backImage
+    },
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept : "application/json"
+      }
+    }
+  );
+
+  console.log({addCardToCartRes});
+
+}
+
+export const updateCarts = async (token, cartId, quantity) =>{
+  console.log(token,cartId, quantity);
+  
+  const updateCartsRes = axios.patch(
+    "https://cake-backend-demo.herokuapp.com/update_carts",
+    {
+      "id": cartId,
+      "quantity":  quantity
+    },
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept : "application/json"
+      }
+    }
+  );
+
+  console.log({updateCartsRes});
+
+}
+
+
+export const deleteCarts = async (token,cartId) =>{
+  console.log(token,cartId);
+  
+  const deleteCartsRes = axios.delete(
+    "https://cake-backend-demo.herokuapp.com/delete_carts",
+    {
+        headers: {
+          "Authorization": "Bearer " + token,
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        data: {"id": cartId}
+    });
+
+  console.log({deleteCartsRes});
+
+}
+
+
+
+

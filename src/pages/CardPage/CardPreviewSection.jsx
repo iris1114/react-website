@@ -1,15 +1,58 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { BREAKPOINTS, COLOR } from "../../utils/styles";
 import defaultFrontImg from "../../images/card/defaultFront.jpg";
 import defaultBackImage from "../../images/card/defaultBack.png";
 import Button from "../../components/common/Button";
+import AuthContext from "../../components/auth/AuthContext";
+import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
+import { addCardToCart } from "../../utils/api";
 
 const CardPreviewSection = ({ frontImage, backImage }) => {
-  const handleClick = () => {
+  const { authData, setAuthData } = useContext(AuthContext);
+  const history = useHistory();
+
+  const handleDownloadClick = () => {
     let element = document.createElement("a");
     element.click();
   };
+
+  const handleCartClick = () => {
+    if (!frontImage || !frontImage) {
+      Swal.fire({
+        icon: "warning",
+        title: "Please custom your card",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      if (authData.access_token) {
+        Swal.fire({
+          icon: "success",
+          title: "Added Successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        setAuthData({
+          ...authData,
+          num_carts: authData.num_carts + 1,
+        });
+
+        addCardToCart(authData.access_token, frontImage, backImage);
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Please Login.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        history.push("/login");
+      }
+    }
+  };
+
   return (
     <StyledCardPreviewSection>
       <h3 className="f-lg-3xl text-center mb-3">Preview</h3>
@@ -27,17 +70,17 @@ const CardPreviewSection = ({ frontImage, backImage }) => {
       </div>
       <div className="d-flex flex-wrap mb-3">
         <div className="col-12 col-md-6 text-center">
-          <a href={frontImage} download onClick={handleClick}>
+          <a href={frontImage} download onClick={handleDownloadClick}>
             <Button text="Download-fron" />
           </a>
         </div>
         <div className="col-12 col-md-6 text-center">
-          <a href={backImage} download onClick={handleClick}>
+          <a href={backImage} download onClick={handleDownloadClick}>
             <Button text="Download-back" />
           </a>
         </div>
       </div>
-      <div className="text-center">
+      <div className="text-center" onClick={handleCartClick}>
         <Button text="Add To Cart" />
       </div>
     </StyledCardPreviewSection>

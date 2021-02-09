@@ -4,20 +4,36 @@ import styled from "styled-components";
 import logo from "../../images/common/logo.png";
 import cartIcon from "../../images/common/cartIcon.png";
 import { BREAKPOINTS, COLOR } from "../../utils/styles";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../auth/AuthContext";
+import Swal from "sweetalert2";
 
 const Header = () => {
   const { authData, setAuthData } = useContext(AuthContext);
   // const localAuthToken = localStorage.getItem("authToken");
   // const localAuthCartNum = localStorage.getItem("authCartNum");
   // const localAuthUsername = localStorage.getItem("authUsername");
+  const history = useHistory();
 
   const handleLogout = () => {
     setAuthData(null);
     // localStorage.clear("authData");
     // localStorage.clear("authCartNum");
     // localStorage.clear("authUsername");
+  };
+
+  const handleCartPageClick = () => {
+    if (authData.access_token) {
+      history.push("/cart");
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Please Login.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      history.push("/login");
+    }
   };
 
   console.log(authData);
@@ -48,7 +64,7 @@ const Header = () => {
                 Login
               </StyledNavLink>
             )}
-            <StyledNavLink to="/cart" className="cart-icon">
+            <div className="cart-icon" onClick={handleCartPageClick}>
               <div className="d-flex">
                 <img src={cartIcon} alt="cart" />
                 {authData && authData.access_token ? (
@@ -59,7 +75,7 @@ const Header = () => {
                   </div>
                 ) : null}
               </div>
-            </StyledNavLink>
+            </div>
           </Nav>
 
           <Navbar.Toggle

@@ -5,6 +5,7 @@ import ProductCouterInput from "../../components/product/ProductCouterInput";
 import AuthContext from "../../components/auth/AuthContext";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
+import { addProductToCart } from "../../utils/api";
 
 const ProductInfoSection = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
@@ -24,6 +25,8 @@ const ProductInfoSection = ({ product }) => {
         ...authData,
         num_carts: authData.num_carts + quantity,
       });
+
+      addProductToCart(authData.access_token, product.id, quantity);
     } else {
       Swal.fire({
         icon: "warning",

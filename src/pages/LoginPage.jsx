@@ -48,7 +48,12 @@ const LoginPage = () => {
             timer: 1500,
           });
         }
-        history.push("/shop");
+
+        if (history.pathname === "/login") {
+          history.push("/shop");
+        } else {
+          history.goBack();
+        }
       })
       .catch((error) => {
         Swal.fire({
