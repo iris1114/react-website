@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Loading from "../../components/common/Loading";
-import useProduct from "../../hooks/product/useProduct";
+import useProduct from "../../hooks/useProduct";
 import ErrorPage from "../ErrorPage";
 import ProductDescriptionSection from "./ProductDescriptionSection";
 import ProductImageSection from "./ProductImageSection";

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../../utils/api";
-
+import { getProducts } from "../utils/api";
 
 const useProductList = () => {
   const [products, setProducts] = useState(null);

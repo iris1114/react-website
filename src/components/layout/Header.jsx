@@ -5,7 +5,7 @@ import logo from "../../images/common/logo.png";
 import cartIcon from "../../images/common/cartIcon.png";
 import { BREAKPOINTS, COLOR } from "../../utils/styles";
 import { Link, useHistory } from "react-router-dom";
-import AuthContext from "../auth/AuthContext";
+import AuthContext from "../../contexts/AuthContext";
 import Swal from "sweetalert2";
 
 const Header = () => {
@@ -22,21 +22,15 @@ const Header = () => {
     // localStorage.clear("authUsername");
   };
 
-  const handleCartPageClick = () => {
-    if (authData.access_token) {
-      history.push("/cart");
-    } else {
-      Swal.fire({
-        icon: "warning",
-        title: "Please Login.",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      history.push("/login");
-    }
+  const handleCartClick = () => {
+    Swal.fire({
+      icon: "warning",
+      title: "Please Login.",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    history.push("/login");
   };
-
-  console.log(authData);
 
   return (
     <StyledHeader>
@@ -50,32 +44,49 @@ const Header = () => {
 
           <Nav className="order-1 order-md-2 info-wrap align-items-center">
             {authData && authData.access_token ? (
-              <p className="mr-3">hi , {authData.username}</p>
-            ) : null}
-
-            {authData && authData.access_token ? (
-              <div onClick={handleLogout}>
-                <StyledNavLink to={"/"} className="login mr-2 mr-md-4">
-                  Logout
-                </StyledNavLink>
-              </div>
-            ) : (
-              <StyledNavLink to={"/login"} className="login mr-2 mr-md-4">
-                Login
-              </StyledNavLink>
-            )}
-            <div className="cart-icon" onClick={handleCartPageClick}>
-              <div className="d-flex">
-                <img src={cartIcon} alt="cart" />
-                {authData && authData.access_token ? (
-                  <div className="cart-number">
-                    <div className="radius">
-                      <p className="number">{authData.num_carts}</p>
+              <>
+                <p className="mr-3 f-s f-lg-m username">
+                  hi , {authData.username}
+                </p>
+                <div onClick={handleLogout}>
+                  <StyledNavLink
+                    to={"/"}
+                    className="login mr-2 mr-md-4 f-s f-lg-m"
+                  >
+                    Logout
+                  </StyledNavLink>
+                </div>
+                <Link to="/cart">
+                  <div className="cart-icon cursor-pointer">
+                    <div className="d-flex">
+                      <img src={cartIcon} alt="cart" />
+                      {authData && authData.access_token ? (
+                        <div className="cart-number">
+                          <div className="radius">
+                            <p className="number">{authData.num_carts}</p>
+                          </div>
+                        </div>
+                      ) : null}
                     </div>
                   </div>
-                ) : null}
-              </div>
-            </div>
+                </Link>
+              </>
+            ) : (
+              <>
+                <StyledNavLink
+                  to={"/login"}
+                  className="login mr-2 mr-md-4 f-s f-lg-m"
+                >
+                  Login
+                </StyledNavLink>
+                <div
+                  className="cart-icon cursor-pointer"
+                  onClick={handleCartClick}
+                >
+                  <img src={cartIcon} alt="cart" />
+                </div>
+              </>
+            )}
           </Nav>
 
           <Navbar.Toggle
@@ -113,6 +124,10 @@ const StyledHeader = styled.header`
     display: block;
   }
 
+  .username {
+    text-transform: uppercase;
+  }
+
   .cart-icon {
     width: 25px;
     display: block;
@@ -140,7 +155,7 @@ const StyledHeader = styled.header`
 
   @media (max-width: ${BREAKPOINTS.lg}px) {
     .logo {
-      width: 120px;
+      width: 100px;
     }
     .cart-icon {
       width: 20px;
@@ -151,6 +166,19 @@ const StyledHeader = styled.header`
     }
     .navbar {
       padding: 0px;
+    }
+    .cart-number {
+      .radius {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .navbar-toggler {
+      padding: 0px 5px;
+    }
+
+    .navbar-brand {
+      margin-right: 0px;
     }
   }
 `;

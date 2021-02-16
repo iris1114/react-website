@@ -5,6 +5,7 @@ import { BREAKPOINTS, COLOR } from "../../utils/styles";
 import { FormControl } from "react-bootstrap";
 import Decoration from "../../components/card/Decoration";
 import Button from "../../components/common/Button";
+import { v4 as uuidv4 } from "uuid";
 
 const CardBackSection = ({ decorations, onBackPreview }) => {
   const initialRectangles = [
@@ -57,7 +58,7 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
         y: 10,
         width: 75,
         height: 75,
-        id: `rect${index + new Date()}`,
+        id: `rect${uuidv4()}`,
         name: deco,
       },
     ]);

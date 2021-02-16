@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
-import defaultCard from "../../images/card/defaultFront.jpg";
 import { BREAKPOINTS, COLOR } from "../../utils/styles";
 import Button from "../../components/common/Button";
+import { v4 as uuidv4 } from "uuid";
+import { cardFrontImages, defaultFrontImage } from "../../utils/data";
 
-const CardFrontSection = ({ frontCards, onFrontPreview }) => {
-  const [cardImage, setCardImage] = useState(defaultCard);
+const CardFrontSection = ({ onFrontPreview }) => {
+  const [cardImage, setCardImage] = useState(defaultFrontImage);
 
   const handleUploadImageChange = (e) => {
     const file = e.target.files[0];
@@ -52,11 +53,10 @@ const CardFrontSection = ({ frontCards, onFrontPreview }) => {
           </div>
 
           <div className=" d-flex flex-wrap">
-            {frontCards.map((image, index) => {
-              image = image.fields.Attachments[0].url;
+            {cardFrontImages.map((image) => {
               return (
                 <div
-                  key={index}
+                  key={uuidv4()}
                   className="col-6 mb-3 option-card"
                   onClick={() => {
                     handleDefaultImageChange(image);

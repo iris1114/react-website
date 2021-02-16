@@ -6,7 +6,7 @@ import bg from "../images/user/cakeBg.jpg";
 import { getLogin } from "../utils/api.js";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
-import AuthContext from "../components/auth/AuthContext";
+import AuthContext from "../contexts/AuthContext";
 import { localAuthData } from "../utils/localStorage";
 
 const LoginPage = () => {
@@ -15,9 +15,9 @@ const LoginPage = () => {
     password: "",
   };
 
-  const history = useHistory();
-
   const [loginData, setLoginData] = useState(defaultData);
+  const { setAuthData } = useContext(AuthContext);
+  const history = useHistory();
 
   const handleUsernameChange = (e) => {
     setLoginData({
@@ -32,8 +32,6 @@ const LoginPage = () => {
       password: e.target.value,
     });
   };
-
-  const { setAuthData } = useContext(AuthContext);
 
   const handleLoginClick = () => {
     getLogin(loginData.username, loginData.password)
@@ -66,26 +64,27 @@ const LoginPage = () => {
   return (
     <StyledLoginPage bg={bg}>
       <div className="container text-center">
-        <UserLoginSignUpTab variant="login-active" />
-
-        <div className="inputs text-center pt-5 col-12 col-md-7 mx-auto">
-          <input
-            type="text"
-            className="form-control mb-3"
-            placeholder="Username"
-            onChange={handleUsernameChange}
-            value={loginData.username}
-          />
-          <input
-            type="password"
-            className="form-control mb-5"
-            placeholder="Password"
-            onChange={handlePasswordChange}
-            value={loginData.password}
-          />
-        </div>
-        <div onClick={handleLoginClick}>
-          <Button text="login" />
+        <div className="text-center">
+          <UserLoginSignUpTab variant="login-active" />
+          <div className="inputs text-center pt-5 col-12 col-md-7 mx-auto">
+            <input
+              type="text"
+              className="form-control mb-3"
+              placeholder="Username"
+              onChange={handleUsernameChange}
+              value={loginData.username}
+            />
+            <input
+              type="password"
+              className="form-control mb-5"
+              placeholder="Password"
+              onChange={handlePasswordChange}
+              value={loginData.password}
+            />
+          </div>
+          <div onClick={handleLoginClick}>
+            <Button text="login" />
+          </div>
         </div>
       </div>
     </StyledLoginPage>

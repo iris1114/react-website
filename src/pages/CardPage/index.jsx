@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Loading from "../../components/common/Loading";
-import useCard from "../../hooks/card/useCard";
+import useCard from "../../hooks/useCard";
 import ErrorPage from "../ErrorPage";
 import CardBackSection from "./CardBackSection";
 import CardFrontSection from "./CardFrontSection";

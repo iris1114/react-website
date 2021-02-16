@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import AuthContext from "../../components/auth/AuthContext";
+import AuthContext from "../../contexts/AuthContext";
 import CartItemBlock from "../../components/cart/CartItemBlock";
-import CartsContext from "../../components/cart/CartsContext";
+import CartsContext from "../../contexts/CartsContext";
 import { deleteCarts, updateCarts } from "../../utils/api";
 import Swal from "sweetalert2";
 
@@ -9,8 +9,6 @@ const CartItemsSection = () => {
   const { cartsData, setCartsData } = useContext(CartsContext);
   const { authData, setAuthData } = useContext(AuthContext);
   const authToken = authData.access_token;
-
-  console.log("block", cartsData);
 
   const handleMinusClick = (index, quantity, cartId, price) => {
     if (quantity > 1) {

@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const HomeHeroSection = () => {
   return (
     <StyledHomeHeroSection>
-      <div className="images-area ">
+      <div className="images-area">
         <div className="deco1">
           <img src={HeroDeco1} alt="deco" />
         </div>
@@ -33,7 +33,7 @@ const HomeHeroSection = () => {
   );
 };
 
-const StyledHomeHeroSection = styled.div`
+const StyledHomeHeroSection = styled.section`
   height: 100vh;
   width: 100vw;
   text-align: center;

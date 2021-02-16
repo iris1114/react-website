@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { getProduct } from "../../utils/api";
+import { getProduct } from "../utils/api";
 
-
-const useProduct = (username,email,password) => {
+const useProduct = (productId) => {
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import { getProduct } from "../../utils/api";
+import { getOrders } from "../utils/api";
 
 
-const useProduct = (productId) => {
-  const [product, setProduct] = useState(null);
+const useOrderCompleted = (authToken) => {
+  const [orders, setOrders] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    getProduct(productId)
+    getOrders(authToken)
       .then((res) => {
-        setProduct(res);
+        setOrders(res);
       })
       .catch((error) => {
         console.log(error.message);
@@ -20,13 +20,13 @@ const useProduct = (productId) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [productId]);
+  }, [authToken]);
 
   return {
-    product,
+    orders,
     loading: isLoading,
     error
   };
 };
 
-export default useProduct;
+export default useOrderCompleted;

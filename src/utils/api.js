@@ -105,7 +105,6 @@ export const getCarts = async (token) => {
 }
 
 export const addProductToCart = async (token, productId, quantity) =>{
-  console.log(token,productId,quantity)
   const addProductToCartRes =  axios.post(
     "https://cake-backend-demo.herokuapp.com/add_product_to_carts",
     {
@@ -146,7 +145,6 @@ export const addCardToCart = async (token, frontImage, backImage) =>{
 }
 
 export const updateCarts = async (token, cartId, quantity) =>{
-  console.log(token,cartId, quantity);
   
   const updateCartsRes = axios.patch(
     "https://cake-backend-demo.herokuapp.com/update_carts",
@@ -168,7 +166,6 @@ export const updateCarts = async (token, cartId, quantity) =>{
 
 
 export const deleteCarts = async (token,cartId) =>{
-  console.log(token,cartId);
   
   const deleteCartsRes = axios.delete(
     "https://cake-backend-demo.herokuapp.com/delete_carts",
@@ -185,6 +182,42 @@ export const deleteCarts = async (token,cartId) =>{
 
 }
 
+
+export const addOrder = async (token,cartIds) =>{
+  
+  const addOrdertRes = axios.post(
+    "https://cake-backend-demo.herokuapp.com/make_orders",
+    {
+      ids:cartIds
+    },
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept : "application/json"
+      }
+    }
+  );
+
+  return addOrdertRes;
+
+}
+
+
+export const getOrders = async (token) =>{
+  
+  const getOrdertRes = await axios.get(
+    "https://cake-backend-demo.herokuapp.com/orders",
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept : "application/json"
+      }
+    }
+  );
+
+  return getOrdertRes.data;
+
+}
 
 
 

@@ -1,5 +1,5 @@
 import { BrowserRouter, Route } from "react-router-dom";
-import Header from "./components/common/Header";
+import Header from "./components/layout/Header";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import CardPage from "./pages/CardPage";
@@ -7,15 +7,15 @@ import LoginPage from "./pages/LoginPage";
 import ProductListPage from "./pages/ProductListPage";
 import CartPage from "./pages/CartPage";
 import Switch from "react-bootstrap/esm/Switch";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
-import Footer from "./components/common/Footer";
+import Footer from "./components/layout/Footer";
 import ProductPage from "./pages/ProductPage";
 import MemberPage from "./pages/MemberPage";
 import SignUpPage from "./pages/SignUpPage";
-import CompletePage from "./pages/CompletePage";
-import { AuthProvider } from "./components/auth/AuthContext";
-import { CartsProvider } from "./components/cart/CartsContext";
+import { AuthProvider } from "./contexts/AuthContext";
+import { CartsProvider } from "./contexts/CartsContext";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+import OrderCompletedPage from "./pages/OrderCompletedPage";
 
 const App = () => {
   return (
@@ -52,7 +52,7 @@ const App = () => {
               <MemberPage />
             </Route>
             <Route path="/complete" exact>
-              <CompletePage />
+              <OrderCompletedPage />
             </Route>
           </Switch>
           <Footer />

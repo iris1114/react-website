@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../utils/styles";
+import { v4 as uuidv4 } from "uuid";
 
 const ProductImageSection = ({ product }) => {
   const [mainImage, setMainImage] = useState(product.images[0]);
@@ -8,11 +9,11 @@ const ProductImageSection = ({ product }) => {
   return (
     <StyledProductImageSection className="d-flex flex-column flex-md-row">
       <div className="d-flex col-12 col-md-3 order-1 flex-md-column order-md-0">
-        {product.images.map((image, index) => {
+        {product.images.map((image) => {
           return (
             <div
               className="small-image mb-2 m-1"
-              key={index}
+              key={uuidv4()}
               onClick={() => {
                 setMainImage(image);
               }}

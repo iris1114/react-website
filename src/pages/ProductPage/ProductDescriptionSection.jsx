@@ -30,7 +30,7 @@ const StyledProductDescriptionSection = styled.section`
       &:hover {
         border-color: ${COLOR.gold} ${COLOR.gold} ${COLOR.white};
         color: ${COLOR.gold};
-        background-color: ${COLOR.nude};
+        background-color: ${COLOR.white};
       }
     }
   }

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import Button from "../../components/common/Button";
 import styled from "styled-components";
 import ProductCouterInput from "../../components/product/ProductCouterInput";
-import AuthContext from "../../components/auth/AuthContext";
+import AuthContext from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { addProductToCart } from "../../utils/api";

@@ -8,10 +8,8 @@ const AboutPage = () => {
   return (
     <main>
       <Banner image={`${banner.about}`} text="About" />
-      <div className="container">
-        <AboutStorySection />
-        <AboutMapSection />
-      </div>
+      <AboutStorySection />
+      <AboutMapSection />
     </main>
   );
 };

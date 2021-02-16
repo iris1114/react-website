@@ -1,12 +1,7 @@
 import React, { createContext, useState } from "react";
 
 const AuthContext = createContext({
-  authData: {
-    // access_token: null,
-    // num_cards: null,
-    // num_orders: null,
-    // num_carts: null,
-  },
+  authData: {},
   setAuthData: null,
 });
 

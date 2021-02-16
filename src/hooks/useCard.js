@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getFrontCards , getDecorations } from "../../utils/api";
+import { getFrontCards , getDecorations } from "../utils/api";
 
 
 const useCard = () => {
@@ -8,10 +8,9 @@ const useCard = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-
   useEffect(() => {
     setIsLoading(true);
-    Promise.all([getFrontCards(), getDecorations()])
+    Promise.all([getFrontCards(), getDecorations()])  //await getFrontCards()  //await getDecorations()
       .then((res) => {
         setFrontCards(res[0]);
         setDecorations(res[1]);
@@ -34,3 +33,6 @@ const useCard = () => {
 };
 
 export default useCard;
+
+//? hook  一成就好
+//context

@@ -7,7 +7,7 @@ import { getSignUp, getLogin } from "../utils/api.js";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import { localAuthData } from "../utils/localStorage";
-import AuthContext from "../components/auth/AuthContext";
+import AuthContext from "../contexts/AuthContext";
 
 const SignUpPage = () => {
   const defaultData = {

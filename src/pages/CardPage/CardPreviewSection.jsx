@@ -1,25 +1,47 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { BREAKPOINTS, COLOR } from "../../utils/styles";
-import defaultFrontImg from "../../images/card/defaultFront.jpg";
 import defaultBackImage from "../../images/card/defaultBack.png";
 import Button from "../../components/common/Button";
-import AuthContext from "../../components/auth/AuthContext";
+import AuthContext from "../../contexts/AuthContext";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import { addCardToCart } from "../../utils/api";
+import { defaultFrontImage } from "../../utils/data";
 
 const CardPreviewSection = ({ frontImage, backImage }) => {
   const { authData, setAuthData } = useContext(AuthContext);
   const history = useHistory();
 
-  const handleDownloadClick = () => {
-    let element = document.createElement("a");
-    element.click();
+  const handleDownloadFrontClick = () => {
+    if (!frontImage) {
+      Swal.fire({
+        icon: "warning",
+        title: "Please custom your card and click done",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      const element = document.createElement("a");
+      element.click();
+    }
+  };
+  const handleDownloadBackClick = () => {
+    if (!backImage) {
+      Swal.fire({
+        icon: "warning",
+        title: "Please custom your card and click done",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      const element = document.createElement("a");
+      element.click();
+    }
   };
 
   const handleCartClick = () => {
-    if (!frontImage || !frontImage) {
+    if (!frontImage) {
       Swal.fire({
         icon: "warning",
         title: "Please custom your card",
@@ -59,7 +81,7 @@ const CardPreviewSection = ({ frontImage, backImage }) => {
       <div className="d-flex flex-wrap mb-3 mb-md-1">
         <div className="col-12 col-md-6 mb-3">
           <img
-            src={frontImage ? frontImage : defaultFrontImg}
+            src={frontImage ? frontImage : defaultFrontImage}
             alt="front"
             className="front-card"
           />
@@ -70,12 +92,12 @@ const CardPreviewSection = ({ frontImage, backImage }) => {
       </div>
       <div className="d-flex flex-wrap mb-3">
         <div className="col-12 col-md-6 text-center">
-          <a href={frontImage} download onClick={handleDownloadClick}>
+          <a href={frontImage} download onClick={handleDownloadFrontClick}>
             <Button text="Download-fron" />
           </a>
         </div>
         <div className="col-12 col-md-6 text-center">
-          <a href={backImage} download onClick={handleDownloadClick}>
+          <a href={backImage} download onClick={handleDownloadBackClick}>
             <Button text="Download-back" />
           </a>
         </div>

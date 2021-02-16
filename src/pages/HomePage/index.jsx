@@ -6,7 +6,9 @@ import styled from "styled-components";
 const HomePage = () => {
   return (
     <StyledHomepage>
-      <HomeHeroSection />
+      <main>
+        <HomeHeroSection />
+      </main>
     </StyledHomepage>
   );
 };

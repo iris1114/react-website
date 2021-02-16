@@ -3,7 +3,7 @@ import Banner from "../../components/common/Banner";
 // import ProductListFilterSection from "./ProductListFilterSection";
 import ProductListSection from "./ProductListSection";
 import { banner } from "../../utils/data";
-import useProductList from "../../hooks/product/useProductList";
+import useProductList from "../../hooks/useProductList";
 import Loading from "../../components/common/Loading";
 import ErrorPage from "../ErrorPage";
 
@@ -19,10 +19,7 @@ const ProductListPage = () => {
       ) : (
         <>
           <Banner image={`${banner.productList}`} text="Shop" />
-          <div className="container">
-            {/* <ProductListFilterSection /> */}
-            <ProductListSection products={products} />
-          </div>
+          <ProductListSection products={products} />
         </>
       )}
     </main>
