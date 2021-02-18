@@ -17,7 +17,11 @@ const CartItemBlock = ({
       <div className="row align-items-center text-center">
         <div className="col-12 col-md-7 mb-3 mb-md-0  d-flex align-items-center">
           <div className="col-5 col-md-3">
-            <img src={item.card_front || item.product_main_image} alt="item" />
+            <img
+              className="item-image"
+              src={item.card_front || item.product_main_image}
+              alt="item"
+            />
           </div>
           <div className="col-5 col-md-4">
             {item.card_name || item.product_name}
@@ -80,9 +84,14 @@ const StyledCartItemBlock = styled.div`
   padding: 20px 0px;
   border-bottom: 1px solid ${COLOR.nude};
 
+  .item-image {
+    max-height: 110px;
+  }
+
   .card-quantity {
     color: ${COLOR.gold};
   }
+
   .trash-icon {
     &:hover {
       color: ${COLOR.gold};

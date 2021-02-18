@@ -42,30 +42,44 @@ const SignUpPage = () => {
   };
 
   const handleSignUp = () => {
-    getSignUp(signUpData)
-      .then((res) => {
-        if (res.data.status === "success!") {
-          Swal.fire({
-            icon: "success",
-            title: "You have signed up successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      })
-      .then(() => {
-        getLogin(signUpData.username, signUpData.password).then((res) => {
-          localAuthData(res.data);
-          setAuthData(res.data);
-          history.push("/shop");
-        });
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "warning",
-          title: error.response.data.detail,
-        });
+    if (
+      signUpData.username === "" ||
+      signUpData.email === "" ||
+      signUpData.password === ""
+    ) {
+      Swal.fire({
+        icon: "warning",
+        title: "All must be filled out",
+        showConfirmButton: true,
       });
+    } else {
+      getSignUp(signUpData)
+        .then((res) => {
+          if (res.data.status === "success!") {
+            Swal.fire({
+              icon: "success",
+              title: "You have signed up successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        })
+        .then(() => {
+          getLogin(signUpData.username, signUpData.password).then((res) => {
+            localAuthData(res.data);
+            setAuthData(res.data);
+            history.push("/shop");
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          Swal.fire({
+            icon: "warning",
+            title: error.response.data.detail,
+          });
+          setSignUpData(defaultData);
+        });
+    }
   };
 
   return (
@@ -76,6 +90,7 @@ const SignUpPage = () => {
         <div className="inputs text-center pt-5 col-12 col-md-7 mx-auto">
           <input
             type="email"
+            name="email"
             className="form-control mb-3"
             placeholder="Email"
             onChange={handleSignUpEmail}

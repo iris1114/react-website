@@ -84,6 +84,8 @@ export const getLogin =  (username,password) =>{
     }
     
   );
+
+  console.log({loginRes})
   
   return loginRes;
 }

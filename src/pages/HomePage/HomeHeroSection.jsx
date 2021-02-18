@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { BREAKPOINTS, COLOR } from "../../utils/styles";
-
 import HeroCake from "../../images/homePage/hero1.png";
 import HeroDeco1 from "../../images/homePage/hero2.png";
 import HeroDeco2 from "../../images/homePage/hero3.png";

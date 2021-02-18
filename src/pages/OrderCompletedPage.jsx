@@ -23,7 +23,6 @@ const OrderCompletedPage = () => {
           <div className="text-center">
             <p className="f-lg-4xl mb-5">Congratulations!</p>
             <p className="f-lg-4xl mb-5">Your Order Was Successful!</p>
-            <div>{}</div>
             <Link to="/shop/" className="text-center">
               <Button text="back to Shop" variant="primary" />
             </Link>

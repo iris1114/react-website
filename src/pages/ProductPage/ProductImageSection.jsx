@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { COLOR } from "../../utils/styles";
+import { BREAKPOINTS, COLOR } from "../../utils/styles";
 import { v4 as uuidv4 } from "uuid";
 
 const ProductImageSection = ({ product }) => {
@@ -35,6 +35,9 @@ const StyledProductImageSection = styled.section`
   .small-image {
     cursor: pointer;
     border: 1px solid ${COLOR.nude};
+    @media (max-width: ${BREAKPOINTS.md}px) {
+      width: 33%;
+    }
   }
   .main-image {
     border: 1px solid ${COLOR.nude};

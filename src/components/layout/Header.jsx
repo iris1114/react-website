@@ -159,13 +159,16 @@ const StyledHeader = styled.header`
     }
     .cart-icon {
       width: 20px;
+      margin-right: 5px;
     }
     .info-wrap {
       flex-direction: row;
       align-items: center;
+      margin-left: auto;
+      margin-right: 20px;
     }
     .navbar {
-      padding: 0px;
+      padding: 15px 0px;
     }
     .cart-number {
       .radius {

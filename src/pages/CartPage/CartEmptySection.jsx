@@ -8,8 +8,8 @@ const CartEmptySection = () => {
     <StyledCartEmptySection>
       <div className="container">
         <div className="text-center">
-          <p className="f-lg-3xl mb-5">The cart is now empty.</p>
-          <p className="f-lg-3xl mb-5">
+          <p className="f-lg-3xl f-l mb-5">The cart is now empty.</p>
+          <p className="f-lg-3xl f-m mb-5">
             Select some products to buy before checking out.
           </p>
           <Link to="/shop">
