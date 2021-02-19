@@ -158,8 +158,8 @@ const StyledHeader = styled.header`
       width: 100px;
     }
     .cart-icon {
-      width: 20px;
-      margin-right: 5px;
+      width: 15px;
+      margin: 0px 5px;
     }
     .info-wrap {
       flex-direction: row;

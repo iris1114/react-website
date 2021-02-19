@@ -112,7 +112,7 @@ const CardPreviewSection = ({ frontImage, backImage }) => {
 const StyledCardPreviewSection = styled.section`
   margin: 50px 0px;
   background-color: ${COLOR.darkBrown};
-  padding: 15px;
+  padding: 15px 0px;
 
   .front-card {
     height: 357px;

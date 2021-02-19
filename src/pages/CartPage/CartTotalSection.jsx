@@ -38,14 +38,12 @@ const CartTotalSection = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          history.push("/complete");
+          setAuthData({
+            ...authData,
+            num_carts: 0,
+          });
         }
-      })
-      .then(() => {
-        history.push("/complete");
-        setAuthData({
-          ...authData,
-          num_carts: 0,
-        });
       })
       .catch(() => {
         Swal.fire({

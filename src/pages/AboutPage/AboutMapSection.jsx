@@ -4,12 +4,18 @@ import styled from "styled-components";
 import { COLOR } from "../../utils/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { GOOGLE_MAP_KEY } from "../../utils/key";
 
 const AboutMapSection = () => {
   const center = {
     lat: 25.033976,
     lng: 121.5623502,
   };
+
+  const googleMapKey =
+    process.env.NODE_ENV === "development"
+      ? GOOGLE_MAP_KEY
+      : process.env.REACT_APP_GOOGLE_MAP_KEY;
 
   return (
     <StyledAboutMapSection>
@@ -34,7 +40,7 @@ const AboutMapSection = () => {
           <div className="col-12 col-md-6">
             <div className="map">
               <GoogleMapReact
-                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_KEY }}
+                bootstrapURLKeys={{ key: googleMapKey }}
                 defaultCenter={center}
                 defaultZoom={17}
               >

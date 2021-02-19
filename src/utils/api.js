@@ -1,4 +1,7 @@
 import axios from "axios";
+import { AIR_TABLE_KEY } from "./key";
+
+const airTableApi = process.env.NODE_ENV === "development" ? AIR_TABLE_KEY : process.env.REACT_APP_AIR_TABLE_KEY ;
 
 export const getProducts = async () => {
   const productsData = await axios.get(
@@ -20,7 +23,7 @@ export const getFrontCards = async () => {
     "https://api.airtable.com/v0/appVGUlGUw44VRhBm/card_font/",
     {
         headers: {
-          Authorization: "Bearer " + process.env.REACT_APP_AIR_TABLE_KEY
+          Authorization: "Bearer " + airTableApi
         }
       }
   );
@@ -28,12 +31,11 @@ export const getFrontCards = async () => {
 };
 
 export const getDecorations = async () => {
-  console.log(process.env.AIR_TABLE_KEY);
   const decorationsData = await axios.get(
     "https://api.airtable.com/v0/appVGUlGUw44VRhBm/card_decorations/",
     {
         headers: {
-          Authorization: "Bearer " + process.env.REACT_APP_AIR_TABLE_KEY
+          Authorization: "Bearer " + airTableApi
         }
       }
   );
@@ -83,9 +85,6 @@ export const getLogin =  (username,password) =>{
     }
     
   );
-
-  console.log({loginRes})
-  
   return loginRes;
 }
 

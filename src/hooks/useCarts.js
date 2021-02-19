@@ -15,7 +15,6 @@ const useCarts = (authToken) => {
     getCarts(authToken)
       .then((res) => {
         setCartsData(res);
-        console.log(res)
         if(res.length > 0){
           setEmptyCarts(false);
         }else if(res.length === 0){
