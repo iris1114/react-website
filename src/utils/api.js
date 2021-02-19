@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { AIR_TABLE_KEY } from "./key";
+import { AIR_TABLE_KEY } from "./key";
 
 
 export const getProducts = async () => {
@@ -22,11 +22,10 @@ export const getFrontCards = async () => {
     "https://api.airtable.com/v0/appVGUlGUw44VRhBm/card_font/",
     {
         headers: {
-          Authorization: "Bearer " + process.env.AIR_TABLE_KEY
+          Authorization: "Bearer " + AIR_TABLE_KEY
         }
       }
   );
-  console.log({frontCardsData});
   return frontCardsData.data.records;
 };
 
@@ -35,11 +34,10 @@ export const getDecorations = async () => {
     "https://api.airtable.com/v0/appVGUlGUw44VRhBm/card_decorations/",
     {
         headers: {
-          Authorization: "Bearer " + process.env.AIR_TABLE_KEY
+          Authorization: "Bearer " + AIR_TABLE_KEY
         }
       }
   );
-  console.log({decorationsData});
   return decorationsData.data.records;
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-// import { GOOGLE_MAP_KEY } from "../../utils/key";
+import { GOOGLE_MAP_KEY } from "../../utils/key";
 import styled from "styled-components";
 import { COLOR } from "../../utils/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,7 +35,7 @@ const AboutMapSection = () => {
           <div className="col-12 col-md-6">
             <div className="map">
               <GoogleMapReact
-                bootstrapURLKeys={{ key: process.env.GOOGLE_MAP_KEY }}
+                bootstrapURLKeys={{ key: GOOGLE_MAP_KEY }}
                 defaultCenter={center}
                 defaultZoom={18}
               >
