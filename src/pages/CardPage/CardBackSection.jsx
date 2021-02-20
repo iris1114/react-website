@@ -39,15 +39,20 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
         width: 490,
         height: 345,
       });
-    } else if (window.innerWidth > BREAKPOINTS.sm) {
+    } else if (window.innerWidth > 400) {
       setCardSize({
         width: 355,
         height: 245,
       });
-    } else {
+    } else if (window.innerWidth > 350) {
       setCardSize({
         width: 315,
         height: 245,
+      });
+    } else {
+      setCardSize({
+        width: 260,
+        height: 220,
       });
     }
   }, []);

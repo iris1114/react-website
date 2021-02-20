@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
-import { getFrontCards , getDecorations } from "../utils/api";
-
+import { getDecorations } from "../utils/api";
 
 const useCard = () => {
-  const [frontCards, setFrontCards] = useState(null);
-  const [decorations,setDecorations] = useState(null);
+  const [decorations, setDecorations] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    Promise.all([getFrontCards(), getDecorations()])  //await getFrontCards()  //await getDecorations()
+    getDecorations()
       .then((res) => {
-        setFrontCards(res[0]);
-        setDecorations(res[1]);
+        setDecorations(res);
       })
       .catch((error) => {
         console.log(error.message);
@@ -25,14 +22,10 @@ const useCard = () => {
   }, []);
 
   return {
-    frontCards,
     decorations,
     loading: isLoading,
-    error
+    error,
   };
 };
 
 export default useCard;
-
-//? hook  一成就好
-//context

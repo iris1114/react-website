@@ -16,6 +16,7 @@ import { CartsProvider } from "./contexts/CartsContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import OrderCompletedPage from "./pages/OrderCompletedPage";
+import "animate.css/animate.min.css";
 
 const App = () => {
   return (

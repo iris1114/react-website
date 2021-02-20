@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 import logo from "../../images/common/logo.png";
@@ -14,6 +14,7 @@ const Header = () => {
   // const localAuthCartNum = localStorage.getItem("authCartNum");
   // const localAuthUsername = localStorage.getItem("authUsername");
   const history = useHistory();
+  const [open, setOpen] = useState(false);
 
   const handleLogout = () => {
     setAuthData(null);
@@ -30,6 +31,12 @@ const Header = () => {
       timer: 1500,
     });
     history.push("/login");
+  };
+
+  const menuClick = () => {
+    if (window.innerWidth < BREAKPOINTS.md) {
+      setOpen(!open);
+    }
   };
 
   return (
@@ -95,20 +102,30 @@ const Header = () => {
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"
             className="order-2 order-md-3"
+            onClick={menuClick}
           />
 
           <Navbar.Collapse
             id="responsive-navbar-nav"
             className="order-3 order-md-1"
+            in={open}
           >
             <Nav className="mx-auto">
-              <StyledNavLink to="/shop" className="m-3 mt-5 mt-md-3">
+              <StyledNavLink
+                to="/shop"
+                className="m-3 mt-5 mt-md-3"
+                onClick={menuClick}
+              >
                 Shop
               </StyledNavLink>
-              <StyledNavLink to="/card" className="m-3">
+              <StyledNavLink to="/card" className="m-3" onClick={menuClick}>
                 Send a Card
               </StyledNavLink>
-              <StyledNavLink to="/about" className="m-3 mb-5 mb-md-0">
+              <StyledNavLink
+                to="/about"
+                className="m-3 mb-5 mb-md-0"
+                onClick={menuClick}
+              >
                 About
               </StyledNavLink>
             </Nav>

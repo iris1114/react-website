@@ -33,11 +33,9 @@ const HomeHeroSection = () => {
 };
 
 const StyledHomeHeroSection = styled.section`
-  height: 100vh;
-  width: 100vw;
   text-align: center;
   background-color: ${COLOR.lightYellow};
-  padding: 100px 0px;
+  padding: 100px 0px 0px;
   display: flex;
   flex-wrap: wrap;
 
@@ -56,21 +54,27 @@ const StyledHomeHeroSection = styled.section`
       position: relative;
       left: 8%;
       top: -20%;
+      animation: bounceInLeft 2s linear;
     }
     .deco2 {
       position: relative;
       left: -10%;
       top: 20%;
+      animation: bounceInRight 2s linear;
     }
     .cake {
       z-index: 1;
+      animation: backInDown 2s linear;
+      @media (max-width: ${BREAKPOINTS.sm}px) {
+        width: 250%;
+      }
     }
   }
 
   .text-area {
     position: relative;
-    left: 15%;
-    top: -45%;
+    left: 6%;
+    top: -240px;
     z-index: 2;
 
     @media (max-width: ${BREAKPOINTS.xl}px) {

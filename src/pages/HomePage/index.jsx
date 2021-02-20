@@ -8,6 +8,7 @@ const HomePage = () => {
     <StyledHomepage>
       <main>
         <HomeHeroSection />
+        {/* <HomeCardSection /> */}
       </main>
     </StyledHomepage>
   );
