@@ -6,6 +6,7 @@ import { BREAKPOINTS, COLOR } from "../../utils/styles";
 import Button from "../../components/common/Button";
 import { v4 as uuidv4 } from "uuid";
 import { cardFrontImages, defaultFrontImage } from "../../utils/data";
+import Swal from "sweetalert2";
 
 const CardFrontSection = ({ onFrontPreview }) => {
   const [cardImage, setCardImage] = useState(defaultFrontImage);
@@ -25,6 +26,16 @@ const CardFrontSection = ({ onFrontPreview }) => {
 
   const handleDoneClick = () => {
     onFrontPreview && onFrontPreview(cardImage);
+    Swal.fire({
+      icon: "success",
+      title: "Custom Successfully!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
+  const handleClearClick = () => {
+    setCardImage(defaultFrontImage);
+    onFrontPreview && onFrontPreview(defaultFrontImage);
   };
 
   return (
@@ -68,8 +79,15 @@ const CardFrontSection = ({ onFrontPreview }) => {
             })}
           </div>
         </div>
-        <div className="mx-auto m-2">
-          <Button text="Done" onButtonClick={handleDoneClick} />
+        <div className="col-12 d-flex justify-content-center m-2">
+          <div className="mr-2">
+            <Button text="Clear" onButtonClick={handleClearClick} />
+          </div>
+          <Button
+            text="Done"
+            variant="primary"
+            onButtonClick={handleDoneClick}
+          />
         </div>
       </div>
     </StyledCardFrontSection>
@@ -91,8 +109,12 @@ const StyledCardFrontSection = styled.section`
     position: relative;
     overflow: hidden;
 
-    @media (max-width: ${BREAKPOINTS.sm}px) {
-      height: 250px;
+    @media (max-width: ${BREAKPOINTS.xl}px) {
+      height: 345px;
+    }
+
+    @media (max-width: ${BREAKPOINTS.md}px) {
+      height: 245px;
     }
   }
 

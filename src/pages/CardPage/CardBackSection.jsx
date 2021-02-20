@@ -6,6 +6,7 @@ import { FormControl } from "react-bootstrap";
 import Decoration from "../../components/card/Decoration";
 import Button from "../../components/common/Button";
 import { v4 as uuidv4 } from "uuid";
+import Swal from "sweetalert2";
 
 const CardBackSection = ({ decorations, onBackPreview }) => {
   const initialRectangles = [
@@ -28,11 +29,28 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
   const stageRef = useRef(null);
 
   useEffect(() => {
-    setCardSize({
-      width: cardRef.current.clientWidth,
-      height: cardRef.current.clientHeight,
-    });
-  }, [cardRef]);
+    if (window.innerWidth > BREAKPOINTS.xl) {
+      setCardSize({
+        width: 600,
+        height: 420,
+      });
+    } else if (window.innerWidth > BREAKPOINTS.md) {
+      setCardSize({
+        width: 490,
+        height: 345,
+      });
+    } else if (window.innerWidth > BREAKPOINTS.sm) {
+      setCardSize({
+        width: 355,
+        height: 245,
+      });
+    } else {
+      setCardSize({
+        width: 315,
+        height: 245,
+      });
+    }
+  }, []);
 
   const handleStageMouseDown = (e) => {
     const clickedOnEmpty = e.target === e.target.getStage();
@@ -60,6 +78,7 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
         height: 75,
         id: `rect${uuidv4()}`,
         name: deco,
+        draggable: true,
       },
     ]);
   };
@@ -73,6 +92,12 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
   const handleDoneClick = () => {
     const uri = stageRef.current.toDataURL();
     onBackPreview && onBackPreview(uri);
+    Swal.fire({
+      icon: "success",
+      title: "Custom Successfully!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return (
@@ -86,7 +111,14 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
               width={cardSize.width}
               height={cardSize.height}
               onMouseDown={handleStageMouseDown}
+              onTouchStart={handleStageMouseDown}
               ref={stageRef}
+              onClick={() => {
+                setEditable(false);
+              }}
+              onTap={() => {
+                setEditable(false);
+              }}
             >
               <Layer>
                 <Rect
@@ -124,17 +156,21 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
                 {!editable && (
                   <Text
                     lineHeight={1.4}
-                    fontSize={30}
+                    fontSize={20}
                     align={"left"}
                     fontFamily={"'Caveat', cursive"}
                     fontStyle={20}
                     text={text}
                     x={50}
                     y={100}
+                    draggable
                     wrap="word"
                     width={cardSize.width - 100}
                     className="text"
                     onDblClick={(e) => {
+                      setEditable(true);
+                    }}
+                    onTap={(e) => {
                       setEditable(true);
                     }}
                   ></Text>
@@ -178,7 +214,11 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
           <div className="mr-2">
             <Button text="Clear" onButtonClick={handleClearClick} />
           </div>
-          <Button text="Done" onButtonClick={handleDoneClick} />
+          <Button
+            text="Done"
+            variant="primary"
+            onButtonClick={handleDoneClick}
+          />
         </div>
       </div>
     </StyledCardBackSection>
@@ -216,6 +256,10 @@ const StyledCardBackSection = styled.section`
         top: 20%;
         left: 5%;
         height: 40%;
+
+        @media (max-width: ${BREAKPOINTS.sm}px) {
+          height: 20%;
+        }
       }
     }
   }

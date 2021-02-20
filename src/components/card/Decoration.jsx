@@ -59,6 +59,7 @@ const Decoration = ({
       <Image
         image={image}
         onClick={onSelect}
+        onTap={onSelect}
         ref={shapeRef}
         {...shapeProps}
         draggable

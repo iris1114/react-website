@@ -17,9 +17,8 @@ const CardPreviewSection = ({ frontImage, backImage }) => {
     if (!frontImage) {
       Swal.fire({
         icon: "warning",
-        title: "Please custom your card and click done",
-        showConfirmButton: false,
-        timer: 1500,
+        title: "Your card FRONT hasn't done.",
+        showConfirmButton: true,
       });
     } else {
       const element = document.createElement("a");
@@ -30,9 +29,8 @@ const CardPreviewSection = ({ frontImage, backImage }) => {
     if (!backImage) {
       Swal.fire({
         icon: "warning",
-        title: "Please custom your card and click done",
-        showConfirmButton: false,
-        timer: 1500,
+        title: "Your card FRONT hasn't done.",
+        showConfirmButton: true,
       });
     } else {
       const element = document.createElement("a");
@@ -41,12 +39,23 @@ const CardPreviewSection = ({ frontImage, backImage }) => {
   };
 
   const handleCartClick = () => {
-    if (!frontImage) {
+    if (!frontImage && !backImage) {
       Swal.fire({
         icon: "warning",
-        title: "Please custom your card",
-        showConfirmButton: false,
-        timer: 1500,
+        title: "Please custom your card and click done",
+        showConfirmButton: true,
+      });
+    } else if (!frontImage) {
+      Swal.fire({
+        icon: "warning",
+        title: "Your card FRONT hasn't done.",
+        showConfirmButton: true,
+      });
+    } else if (!backImage) {
+      Swal.fire({
+        icon: "warning",
+        title: "Your card BACK hasn't done.",
+        showConfirmButton: true,
       });
     } else {
       if (authData.access_token) {
@@ -83,11 +92,15 @@ const CardPreviewSection = ({ frontImage, backImage }) => {
           <img
             src={frontImage ? frontImage : defaultFrontImage}
             alt="front"
-            className="front-card"
+            className="card"
           />
         </div>
         <div className="col-12 col-md-6">
-          <img src={backImage ? backImage : defaultBackImage} alt="front" />
+          <img
+            src={backImage ? backImage : defaultBackImage}
+            alt="front"
+            className="card"
+          />
         </div>
       </div>
       <div className="d-flex flex-wrap mb-3">
@@ -103,7 +116,7 @@ const CardPreviewSection = ({ frontImage, backImage }) => {
         </div>
       </div>
       <div className="text-center" onClick={handleCartClick}>
-        <Button text="Add To Cart" />
+        <Button variant="primary" text="Add To Cart" />
       </div>
     </StyledCardPreviewSection>
   );
@@ -114,13 +127,17 @@ const StyledCardPreviewSection = styled.section`
   background-color: ${COLOR.darkBrown};
   padding: 15px 0px;
 
-  .front-card {
-    height: 357px;
+  .card {
+    height: 355px;
     position: relative;
     overflow: hidden;
 
-    @media (max-width: ${BREAKPOINTS.sm}px) {
-      height: 250px;
+    @media (max-width: ${BREAKPOINTS.xl}px) {
+      height: 345px;
+    }
+
+    @media (max-width: ${BREAKPOINTS.md}px) {
+      height: 245px;
     }
   }
 `;

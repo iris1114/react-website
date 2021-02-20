@@ -57,9 +57,12 @@ const Header = () => {
                   </StyledNavLink>
                 </div>
                 <Link to="/cart">
-                  <div className="cart-icon cursor-pointer">
+                  <div className=" cursor-pointer">
                     <div className="d-flex">
-                      <img src={cartIcon} alt="cart" />
+                      <div className="cart-icon">
+                        <img src={cartIcon} alt="cart" />
+                      </div>
+
                       {authData && authData.access_token ? (
                         <div className="cart-number">
                           <div className="radius">
@@ -158,14 +161,14 @@ const StyledHeader = styled.header`
       width: 100px;
     }
     .cart-icon {
-      width: 15px;
+      width: 20px;
       margin: 0px 5px;
     }
     .info-wrap {
       flex-direction: row;
       align-items: center;
       margin-left: auto;
-      margin-right: 20px;
+      margin-right: 10px;
     }
     .navbar {
       padding: 15px 0px;
