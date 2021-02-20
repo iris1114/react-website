@@ -104,7 +104,7 @@ const SignUpPage = () => {
             value={signUpData.username}
           />
           <input
-            type="text"
+            type="password"
             className="form-control mb-5"
             placeholder="Password"
             onChange={handleSignUpPassword}
