@@ -13,7 +13,7 @@ const CardFrontSection = ({ onFrontPreview }) => {
 
   const handleUploadImageChange = (e) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
+    let reader = new FileReader();
     reader.onloadend = () => {
       setCardImage(reader.result);
     };

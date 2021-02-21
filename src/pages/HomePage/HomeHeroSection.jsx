@@ -22,8 +22,8 @@ const HomeHeroSection = () => {
       </div>
 
       <div className="text-area">
-        <p className="f-lg-6xl f-xl"> Get Your Own </p>
-        <p className="f-lg-6xl f-xl mb-5">Slice of Heaven</p>
+        <p className="f-lg-6xl f-2xl"> Get Your Own </p>
+        <p className="f-lg-6xl f-2xl mb-5">Slice of Heaven</p>
         <Link to="/shop">
           <Button text="shop now" />
         </Link>

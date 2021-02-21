@@ -27,6 +27,7 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
   const [editable, setEditable] = useState(false);
   const cardRef = useRef();
   const stageRef = useRef(null);
+  const [textFontSize, setTextFontSize] = useState(20);
 
   useEffect(() => {
     if (window.innerWidth > BREAKPOINTS.xl) {
@@ -34,26 +35,31 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
         width: 600,
         height: 420,
       });
+      setTextFontSize(30);
     } else if (window.innerWidth > BREAKPOINTS.md) {
       setCardSize({
         width: 490,
         height: 345,
       });
+      setTextFontSize(24);
     } else if (window.innerWidth > 400) {
       setCardSize({
         width: 355,
         height: 245,
       });
+      setTextFontSize(20);
     } else if (window.innerWidth > 350) {
       setCardSize({
         width: 315,
         height: 245,
       });
+      setTextFontSize(16);
     } else {
       setCardSize({
         width: 260,
         height: 220,
       });
+      setTextFontSize(16);
     }
   }, []);
 
@@ -161,7 +167,7 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
                 {!editable && (
                   <Text
                     lineHeight={1.4}
-                    fontSize={20}
+                    fontSize={textFontSize}
                     align={"left"}
                     fontFamily={"'Caveat', cursive"}
                     fontStyle={20}

@@ -1,5 +1,5 @@
 import React from "react";
-// import HomeCardSection from "./HomeCardSection";
+import HomeCardSection from "./HomeCardSection";
 import HomeHeroSection from "./HomeHeroSection";
 import styled from "styled-components";
 
@@ -8,7 +8,7 @@ const HomePage = () => {
     <StyledHomepage>
       <main>
         <HomeHeroSection />
-        {/* <HomeCardSection /> */}
+        <HomeCardSection />
       </main>
     </StyledHomepage>
   );
