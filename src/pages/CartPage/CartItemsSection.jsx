@@ -11,52 +11,46 @@ const CartItemsSection = () => {
   const authToken = authData.access_token;
 
   const handleMinusClick = (index, quantity, cartId, price) => {
-    if (quantity > 1) {
-      setCartsData([
-        ...cartsData.slice(0, index),
-        {
-          ...cartsData[index],
-          quantity: quantity - 1,
-          total_price: (quantity - 1) * price,
-        },
-        ...cartsData.slice(index + 1),
-      ]);
-      setAuthData({
-        ...authData,
-        num_carts: authData.num_carts - 1,
-      });
+    let newTotalPrice = quantity > 1 ? (quantity - 1) * price : price;
 
-      updateCarts(authToken, cartId, quantity - 1);
-    } else {
-      setCartsData([
-        ...cartsData.slice(0, index),
-        {
-          ...cartsData[index],
-          quantity: 1,
-          total_price: 1 * price,
-        },
-        ...cartsData.slice(index + 1),
-      ]);
-      updateCarts(authToken, cartId, 1);
-    }
+    let newCartsData = [
+      ...cartsData.slice(0, index),
+      {
+        ...cartsData[index],
+        quantity: quantity > 1 ? quantity - 1 : 1,
+        total_price: newTotalPrice,
+      },
+      ...cartsData.slice(index + 1),
+    ];
+
+    setCartsData(newCartsData);
+    setAuthData({
+      ...authData,
+      num_carts: authData.num_carts - (quantity - newCartsData[index].quantity),
+    });
+
+    updateCarts(authToken, cartId, newCartsData[index].quantity);
   };
 
   const handlePlusClick = (index, quantity, cartId, price) => {
-    setCartsData([
+    let newTotalPrice = (quantity + 1) * price;
+    let newCartsData = [
       ...cartsData.slice(0, index),
       {
         ...cartsData[index],
         quantity: quantity + 1,
-        total_price: (quantity + 1) * price,
+        total_price: newTotalPrice,
       },
       ...cartsData.slice(index + 1),
-    ]);
+    ];
+
+    setCartsData(newCartsData);
     setAuthData({
       ...authData,
       num_carts: authData.num_carts + 1,
     });
 
-    updateCarts(authToken, cartId, quantity + 1);
+    updateCarts(authToken, cartId, newCartsData[index].quantity);
   };
 
   const handleDeleteClick = (index, quantity, cartId) => {

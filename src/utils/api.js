@@ -2,51 +2,39 @@ import axios from "axios";
 
 export const getProducts = async () => {
   const productsData = await axios.get(
-    "https://cake-backend-demo.herokuapp.com/products"
+    "https://cake-backend-demo.fly.dev/products"
   );
   return productsData.data;
 };
 
 export const getProduct = async (productId) => {
   const productData = await axios.get(
-    `https://cake-backend-demo.herokuapp.com/products/${productId}`
+    `https://cake-backend-demo.fly.dev/products/${productId}`
   );
   return productData.data;
 };
 
 export const getFrontCards = async () => {
   const frontCardsData = await axios.get(
-    "https://api.airtable.com/v0/appVGUlGUw44VRhBm/card_font/",
-    {
-      headers: {
-        Authorization: "Bearer " + process.env.REACT_APP_AIR_TABLE_KEY,
-      },
-    }
+    "https://cake-backend-demo.fly.dev/card-font"
   );
-  return frontCardsData.data.records;
+  console.log("frontCardsData", frontCardsData);
+  return frontCardsData.data;
 };
 
 export const getDecorations = async () => {
   const decorationsData = await axios.get(
-    "https://api.airtable.com/v0/appVGUlGUw44VRhBm/card_decorations/",
-    {
-      headers: {
-        Authorization: "Bearer " + process.env.REACT_APP_AIR_TABLE_KEY,
-      },
-    }
+    "https://cake-backend-demo.fly.dev/card-decorations"
   );
-  return decorationsData.data.records;
+  return decorationsData.data;
 };
 
 export const getSignUp = async (signUpData) => {
-  const registerRes = axios.post(
-    "https://cake-backend-demo.herokuapp.com/signup",
-    {
-      username: signUpData.username,
-      email: signUpData.email,
-      password: signUpData.password,
-    }
-  );
+  const registerRes = axios.post("https://cake-backend-demo.fly.dev/signup", {
+    username: signUpData.username,
+    email: signUpData.email,
+    password: signUpData.password,
+  });
   return registerRes;
 };
 
@@ -68,7 +56,7 @@ export const getLogin = (username, password) => {
   formBody = formBody.join("&");
 
   const loginRes = axios.post(
-    "https://cake-backend-demo.herokuapp.com/auth/token",
+    "https://cake-backend-demo.fly.dev/auth/token",
     {
       formBody,
     },
@@ -83,22 +71,19 @@ export const getLogin = (username, password) => {
 };
 
 export const getCarts = async (token) => {
-  const cartsData = await axios.get(
-    "https://cake-backend-demo.herokuapp.com/carts",
-    {
-      headers: {
-        Authorization: "Bearer " + token,
-        Accept: "application/json",
-      },
-    }
-  );
+  const cartsData = await axios.get("https://cake-backend-demo.fly.dev/carts", {
+    headers: {
+      Authorization: "Bearer " + token,
+      Accept: "application/json",
+    },
+  });
 
   return cartsData.data;
 };
 
 export const addProductToCart = async (token, productId, quantity) => {
   const addProductToCartRes = axios.post(
-    "https://cake-backend-demo.herokuapp.com/add_product_to_carts",
+    "https://cake-backend-demo.fly.dev/add_product_to_carts",
     {
       id: productId,
       quantity: quantity,
@@ -116,7 +101,7 @@ export const addProductToCart = async (token, productId, quantity) => {
 
 export const addCardToCart = async (token, frontImage, backImage) => {
   const addCardToCartRes = axios.post(
-    "https://cake-backend-demo.herokuapp.com/add_card_to_carts",
+    "https://cake-backend-demo.fly.dev/add_card_to_carts",
     {
       name: "Custom Card",
       front: frontImage,
@@ -135,7 +120,7 @@ export const addCardToCart = async (token, frontImage, backImage) => {
 
 export const updateCarts = async (token, cartId, quantity) => {
   const updateCartsRes = axios.patch(
-    "https://cake-backend-demo.herokuapp.com/update_carts",
+    "https://cake-backend-demo.fly.dev/update_carts",
     {
       id: cartId,
       quantity: quantity,
@@ -153,7 +138,7 @@ export const updateCarts = async (token, cartId, quantity) => {
 
 export const deleteCarts = async (token, cartId) => {
   const deleteCartsRes = axios.delete(
-    "https://cake-backend-demo.herokuapp.com/delete_carts",
+    "https://cake-backend-demo.fly.dev/delete_carts",
     {
       headers: {
         Authorization: "Bearer " + token,
@@ -169,7 +154,7 @@ export const deleteCarts = async (token, cartId) => {
 
 export const addOrder = async (token, cartIds) => {
   const addOrdertRes = axios.post(
-    "https://cake-backend-demo.herokuapp.com/make_orders",
+    "https://cake-backend-demo.fly.dev/make_orders",
     {
       ids: cartIds,
     },
@@ -186,7 +171,7 @@ export const addOrder = async (token, cartIds) => {
 
 export const getOrders = async (token) => {
   const getOrdertRes = await axios.get(
-    "https://cake-backend-demo.herokuapp.com/orders",
+    "https://cake-backend-demo.fly.dev/orders",
     {
       headers: {
         Authorization: "Bearer " + token,
@@ -196,4 +181,15 @@ export const getOrders = async (token) => {
   );
 
   return getOrdertRes.data;
+};
+
+export const getCards = async (token) => {
+  const cardsData = await axios.get("https://cake-backend-demo.fly.dev/cards", {
+    headers: {
+      Authorization: "Bearer " + token,
+      Accept: "application/json",
+    },
+  });
+
+  return cardsData.data;
 };

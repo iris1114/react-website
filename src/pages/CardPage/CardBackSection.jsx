@@ -206,7 +206,7 @@ const CardBackSection = ({ decorations, onBackPreview }) => {
         <div className="col-12 col-md-5 select-area">
           <div className=" d-flex flex-wrap">
             {decorations.map((deco, index) => {
-              deco = deco.fields.Attachments[0].url;
+              deco = deco.attachments;
               return (
                 <div
                   key={index}

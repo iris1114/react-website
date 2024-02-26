@@ -13,7 +13,7 @@ const ProductListSection = ({ products }) => {
               return (
                 <Link to={`/shop/${product.id}`} key={uuidv4()}>
                   <ProductCard
-                    image={product.image}
+                    image={product.main_image}
                     name={product.name}
                     price={product.price}
                   />
